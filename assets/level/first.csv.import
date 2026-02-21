@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bonxjqkpgxkiv"
+
+[deps]
+
+files=["res://assets/level/first.type.translation", "res://assets/level/first.timing.translation"]
+
+source_file="res://assets/level/first.csv"
+dest_files=["res://assets/level/first.type.translation", "res://assets/level/first.timing.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
