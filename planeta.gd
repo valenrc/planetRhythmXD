@@ -15,6 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	# agrego algo
 	position.x = amplitud*cos(t) + desp_x
 	position.y = amplitud*sin(t) + desp_y
 	
