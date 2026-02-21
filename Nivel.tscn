@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3ccvia3jfyma"]
+
+[ext_resource type="Script" uid="uid://b0mrg76xe506t" path="res://Nivel.gd" id="1_xigpd"]
+
+[node name="Nivel" type="Control" unique_id=66676502]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xigpd")
+
+[node name="Timer" type="Timer" parent="." unique_id=2046100151]
+wait_time = 0.001
