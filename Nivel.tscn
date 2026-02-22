@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://b3ccvia3jfyma"]
 
 [ext_resource type="Script" uid="uid://b0mrg76xe506t" path="res://Nivel.gd" id="1_xigpd"]
+[ext_resource type="PackedScene" uid="uid://kipm5tsp4fq2" path="res://conductor.tscn" id="2_8g3sk"]
+[ext_resource type="AudioStream" uid="uid://eyn7v2v7hjmm" path="res://assets/music/tutorial.mp3" id="3_c4cy6"]
 
 [node name="Nivel" type="Control" unique_id=66676502]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xigpd")
 
-[node name="Timer" type="Timer" parent="." unique_id=2046100151]
-wait_time = 0.001
+[node name="Conductor" parent="." unique_id=1837012458 instance=ExtResource("2_8g3sk")]
+stream = ExtResource("3_c4cy6")
