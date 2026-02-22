@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kipm5tsp4fq2"]
+
+[ext_resource type="Script" uid="uid://bs526qsaggval" path="res://conductor.gd" id="1_rjrga"]
+
+[node name="Conductor" type="AudioStreamPlayer" unique_id=1837012458]
+script = ExtResource("1_rjrga")
