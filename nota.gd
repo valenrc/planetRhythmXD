@@ -4,7 +4,7 @@ extends Node2D
 # ... eres un notas!
 
 # ESTO DEBERIA SER UNA VARIABLE GLOBAL
-var note_speed:float = 1000 # tiempo en ms que tarda en ir del centro al judgement line (radio 0 ->  judgementline.radio)
+var note_speed:float = 2000 # tiempo en ms que tarda en ir del centro al judgement line (radio 0 ->  judgementline.radio)
 
 # Variables a instanciar por el nivel que crea la nota
 var spawn_time:float # spawning time de la nota en ms
@@ -18,6 +18,11 @@ var center:Vector2
 var del_delta:float = 0.2	 # delta para eliminar la nota despues de que haya pasado la judgement line
 
 #var note_progress:float # progeso en ms de la nota; desde que spawnea hasta el progreso actual de la canción
+
+# timing para eliminar la nota del arbol de nodos
+var miss_judgement_ms = 400
+var late_window_normalized: float = miss_judgement_ms / note_speed
+signal note_miss()
 
 func _ready() -> void:
 	center = get_viewport_rect().get_center()
@@ -37,11 +42,18 @@ func _process(delta: float) -> void:
 	
 	queue_redraw() # re-renderizar
 	
-	if note_progress > 1.0 + del_delta:
-		print("nukeo nota. progress: ", note_progress, " 1.0 + delta: ", 1.0 + del_delta)
-		queue_free() # nukea este nodo
+	#if note_progress > 1.0 + del_delta:
+	#if abs(1.0 - note_progress) < tolerance:
+	if note_progress > 1.0 + late_window_normalized:
+		#print("note nuked - song_pos_ms = ", song_position_ms, " timing = ", spawn_time + note_speed, " progress = ", note_progress)
+		note_miss.emit() # esto debe llegar al nivel para resetear el combo
+		queue_free()
 	
 func _draw() -> void:
 	# https://docs.godotengine.org/en/stable/tutorials/2d/custom_drawing_in_2d.html
 	if radio > 0:
 		draw_arc(center, radio, 0, 2*PI, 64, Color.GOLD, 0.8, true)
+		
+func note_hit() -> void:
+	queue_free()
+	return
