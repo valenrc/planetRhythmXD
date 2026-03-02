@@ -72,7 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var closest_note = note_queue[0]
 	var error = abs(song_pos_ms - closest_note[1])
 	
-	print(error)
+	print("timing: ", closest_note[1], " error: ", error)
 	
 	if error > judg_ms.BAD:
 		return # no hacer nada si el input no está dentro del timing windows
