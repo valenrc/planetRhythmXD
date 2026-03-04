@@ -28,12 +28,12 @@ var next_nota:int = 0     # contador de proxima nota a renderizar
 var notas:Array
 @export var nota_scene: PackedScene
 var score:int = 0
-var nivel_path:String = "./assets/level/first_processed.lvl"
+var nivel_path:String = "./assets/level/second_processed.lvl"
 var next_note_to_judge:int = 0
 
-var note_queue: Array = []  # FIFO para manejar las notas activas en el nivel
+var note_queue1: Array = []  # FIFO para manejar las notas activas en el nivel
+var note_queue2: Array = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# cargar nivel
 	notas = load_level(nivel_path)
@@ -63,13 +63,19 @@ func _process(delta: float) -> void:
 		next_nota += 1
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("note_input_1"): # modificar cuando se agregue el segundo input
+	var queue: Array
+	if event.is_action_pressed("note_input_1"):
+		queue = note_queue1
+	elif event.is_action_pressed("note_input_2"):
+		queue = note_queue2
+	else:
 		return
-	if note_queue.is_empty():
+	
+	if queue.is_empty():
 		return
 	
 	var song_pos_ms = $Conductor.song_position * 1000
-	var closest_note = note_queue[0]
+	var closest_note = queue[0]
 	var error = abs(song_pos_ms - closest_note[1])
 	
 	print("timing: ", closest_note[1], " error: ", error)
@@ -77,7 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if error > judg_ms.BAD:
 		return # no hacer nada si el input no está dentro del timing windows
 	
-	note_queue.pop_front()
+	queue.pop_front()
 	
 	# avisarle a la nota que se destruya
 	if closest_note[0].has_method("note_hit"):
@@ -100,22 +106,43 @@ func judge(error) -> String:
 
 func _spawn_note() -> void:
 	var nota_inst = nota_scene.instantiate()
+	
+	var note_type = notas[next_nota][TYPE]
+	
 	nota_inst.spawn_time = notas[next_nota][SPAWN]
 	nota_inst.jl_radio = 100.0 # refactorizar: está repetido en judgementline
 	nota_inst.conductor = $Conductor
+	if note_type == 1:
+		nota_inst.color = Color.GOLD
+	elif note_type == 2:
+		nota_inst.color = Color.MAGENTA
+	else:
+		# nunca debería llegar acá si el nivel está bien creado
+		nota_inst.queue_free()
+		return
+
 	add_child(nota_inst)
 	
 	# encolar en notas activas
 	var note_timing = notas[next_nota][TIMING]
-	note_queue.push_back([nota_inst, note_timing]) # push back (intancia, timing)
-	
-	nota_inst.note_miss.connect(_on_note_miss)
+	 # push back (intancia, timing)
+	if note_type == 1:
+		note_queue1.push_back([nota_inst, note_timing])
+		nota_inst.note_miss.connect(_on_note_miss_type1)
+	elif note_type == 2:
+		note_queue2.push_back([nota_inst, note_timing])
+		nota_inst.note_miss.connect(_on_note_miss_type2)
+	else: return
 
-func _on_note_miss() -> void:
-	note_queue.pop_front() # desencolar ultima nota
+func _on_note_miss_type1() -> void:
+	if not note_queue1.is_empty():
+		note_queue1.pop_front() # desencolar ultima nota
 	# resetear combo y toda la bola
 	# la nota se elimina solita
-	
+
+func _on_note_miss_type2() -> void:
+	if not note_queue2.is_empty():
+		note_queue2.pop_front()
 
 func load_level(path: String) -> Array:
 	"""

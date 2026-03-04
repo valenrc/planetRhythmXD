@@ -10,14 +10,13 @@ var note_speed:float = 2000 # tiempo en ms que tarda en ir del centro al judgeme
 var spawn_time:float # spawning time de la nota en ms
 var jl_radio:float # radio de la judgement line en la escena del nivel (default: 100)
 var conductor: AudioStreamPlayer
+var color:Color
 
 # variables locales a la instancia
 var active:bool
 var radio:float = 0
 var center:Vector2
 var del_delta:float = 0.2	 # delta para eliminar la nota despues de que haya pasado la judgement line
-
-#var note_progress:float # progeso en ms de la nota; desde que spawnea hasta el progreso actual de la canción
 
 # timing para eliminar la nota del arbol de nodos
 var miss_judgement_ms = 400
@@ -52,7 +51,7 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	# https://docs.godotengine.org/en/stable/tutorials/2d/custom_drawing_in_2d.html
 	if radio > 0:
-		draw_arc(center, radio, 0, 2*PI, 64, Color.GOLD, 0.8, true)
+		draw_arc(center, radio, 0, 2*PI, 64, color, 0.8, true)
 		
 func note_hit() -> void:
 	queue_free()
