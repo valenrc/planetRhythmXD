@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cvut3f7t0gohf"]
 
 [ext_resource type="Script" uid="uid://dpyyi8vosj4gc" path="res://planeta.gd" id="1_8xq8f"]
-[ext_resource type="Texture2D" uid="uid://bbms77exfav1m" path="res://assets/img/Planet_Pack_bycancer/neptunlikeplanet.png" id="2_lyjbk"]
+[ext_resource type="Texture2D" uid="uid://bbms77exfav1m" path="res://assets/img/Planet_Pack_bycancer/neptunlikeplanet.png" id="2_8xq8f"]
 
 [node name="Planeta" type="Node2D" unique_id=998955626]
 script = ExtResource("1_8xq8f")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892749940]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_lyjbk")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_8xq8f")

@@ -1,7 +1,7 @@
 extends Node2D
 
 var t = 0.0 # va de 0 a 2*pi en bucle
-var speed = 0.05
+var speed = 0.01
 var amplitud = 100
 var desp_x
 var desp_y
@@ -11,7 +11,6 @@ func _ready() -> void:
 	desp_x = get_viewport_rect().get_center().x
 	desp_y = get_viewport_rect().get_center().y
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
