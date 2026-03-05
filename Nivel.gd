@@ -6,21 +6,26 @@ enum { # constantes para acceder a campos de las notas en el array
 	TIMING,
 	SPAWN
 }
-
 enum judg_ms{ # timing windows en ms (kinda como los de osu pero sin OD)
 	MAX = 30,
 	PRF = 64,
 	EXC = 97,
 	GOOD = 127,
-	BAD = 180
+	BAD = 200
 }
-
 const scores = {
 	"MAX": 320,
 	"Perfect": 300,
 	"Excellent": 200,
 	"Good": 100,
 	"Bad": 50
+}
+var n_scores = {	# cantidad de hits por juicio
+	"MAX" = 0,
+	"Perfect" = 0,
+	"Excellent" = 0,
+	"Good" = 0,
+	"Bad" = 0
 }
 
 var note_speed:int = 2000 # tiempo en milisegundos de note speed
@@ -29,6 +34,8 @@ var notas:Array
 @export var nota_scene: PackedScene
 var score:int
 var combo:int
+var accuracy:float
+var nmisses:int
 var nivel_path:String = "./assets/level/second_processed.lvl"
 var next_note_to_judge:int = 0
 
@@ -43,11 +50,9 @@ func _ready() -> void:
 	$Conductor.bpm = 146
 	$Conductor.measures = 4
 	
-	#print("nivel cargado")
-	#print(notas)
-	
 	score = 0
 	combo = 0
+	nmisses = 0
 	
 	$Conductor.play()
 	
@@ -87,36 +92,52 @@ func _unhandled_input(event: InputEvent) -> void:
 		return # no hacer nada si el input no está dentro del timing windows
 	
 	combo += 1
-	print(judge(error))
+	var juicio = judge(error)
+	update_measurements(juicio)
+	update_accuracy()
+	
+	################ PRINT PARA DEBUG
+	print(juicio)
 	print("score: ",score)
 	print("combo: ", combo)
+	print("accuracy: ",accuracy*100)
+	
 	queue.pop_front()
 	
 	# avisarle a la nota que se destruya
 	if closest_note[0].has_method("note_hit"):
 		closest_note[0].note_hit()
-	
 
 func judge(error) -> String:
 	if error <= judg_ms.MAX:
-		score += scores["MAX"]
 		return "MAX"
 	elif error <= judg_ms.PRF:
-		score += scores["Perfect"]
 		return "Perfect"
 	elif error <= judg_ms.EXC:
-		score += scores["Excellent"]
 		return "Excellent"
 	elif error <= judg_ms.GOOD:
-		score += scores["Good"]
 		return "Good"
 	elif error <= judg_ms.BAD:
-		score += scores["Good"]
 		return "Bad"
 	else:
 		# jamas va a entrar acá
 		return "Miss"
 
+func update_measurements(judgement:String) -> void:
+	if judgement in scores.keys():
+		score += scores[judgement]
+		n_scores[judgement] += 1
+
+func update_accuracy() -> void:
+	# https://osu.ppy.sh/wiki/en/Gameplay/Accuracy#osu%21mania
+	var nmax = n_scores["MAX"]
+	var n300 = n_scores["Perfect"]
+	var n200 = n_scores["Excellent"]
+	var n100 = n_scores["Good"]
+	var n50 = n_scores["Bad"]
+	
+	accuracy = (300.0*(nmax + n300) + 200.0*n200 + 100.0*n100 + 50.0*n50) / (300.0*(nmax + n300 + n200 + n100 + n50 + nmisses))
+	
 func _spawn_note() -> void:
 	var nota_inst = nota_scene.instantiate()
 	
@@ -151,8 +172,6 @@ func _on_note_miss_type1() -> void:
 	if not note_queue1.is_empty():
 		miss_handle()
 		note_queue1.pop_front() # desencolar ultima nota
-	# resetear combo y toda la bola
-	# la nota se elimina solita
 
 func _on_note_miss_type2() -> void:
 	if not note_queue2.is_empty():
@@ -161,6 +180,8 @@ func _on_note_miss_type2() -> void:
 
 func miss_handle() -> void:
 	combo = 0
+	nmisses += 1
+	update_accuracy()
 	print("MISS!")
 
 func load_level(path: String) -> Array:

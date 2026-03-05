@@ -18,7 +18,7 @@ var radio:float = 0
 var center:Vector2
 
 # timing para eliminar la nota del arbol de nodos
-var miss_judgement_ms = 200
+var miss_judgement_ms = 220
 var late_window_normalized: float = miss_judgement_ms / note_speed
 signal note_miss()
 
