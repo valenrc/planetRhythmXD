@@ -1,7 +1,7 @@
 extends Node2D
 
 var t = 0.0 # va de 0 a 2*pi en bucle
-var speed = 0.01
+var speed = GlobalScripts.velocidad_planeta
 var amplitud = 100
 var desp_x
 var desp_y
@@ -10,6 +10,10 @@ var desp_y
 func _ready() -> void:
 	desp_x = get_viewport_rect().get_center().x
 	desp_y = get_viewport_rect().get_center().y
+	if GlobalScripts.skin == "default":
+		$Sprite2D.texture = load("res://assets/img/Planet_Pack_bycancer/neptunlikeplanet.png")
+	elif GlobalScripts.skin == "skin1":
+		$Sprite2D.texture = load("res://assets/img/Cubawikilogo_pixelated.png")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

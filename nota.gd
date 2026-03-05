@@ -4,7 +4,7 @@ extends Node2D
 # ... eres un notas!
 
 # ESTO DEBERIA SER UNA VARIABLE GLOBAL
-var note_speed:float = 2000 # tiempo en ms que tarda en ir del centro al judgement line (radio 0 ->  judgementline.radio)
+var note_speed:float = GlobalScripts.scroll_speed # tiempo en ms que tarda en ir del centro al judgement line (radio 0 ->  judgementline.radio)
 
 # Variables a instanciar por el nivel que crea la nota
 var spawn_time:float # spawning time de la nota en ms

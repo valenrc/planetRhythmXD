@@ -28,7 +28,7 @@ var n_scores = {	# cantidad de hits por juicio
 	"Bad" = 0
 }
 
-var note_speed:int = 2000 # tiempo en milisegundos de note speed
+var note_speed:int = GlobalScripts.scroll_speed # tiempo en milisegundos de note speed
 var next_nota:int = 0     # contador de proxima nota a renderizar
 var notas:Array
 @export var nota_scene: PackedScene
