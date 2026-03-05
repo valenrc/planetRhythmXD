@@ -16,10 +16,9 @@ var color:Color
 var active:bool
 var radio:float = 0
 var center:Vector2
-var del_delta:float = 0.2	 # delta para eliminar la nota despues de que haya pasado la judgement line
 
 # timing para eliminar la nota del arbol de nodos
-var miss_judgement_ms = 400
+var miss_judgement_ms = 200
 var late_window_normalized: float = miss_judgement_ms / note_speed
 signal note_miss()
 

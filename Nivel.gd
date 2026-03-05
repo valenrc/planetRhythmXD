@@ -27,7 +27,8 @@ var note_speed:int = 2000 # tiempo en milisegundos de note speed
 var next_nota:int = 0     # contador de proxima nota a renderizar
 var notas:Array
 @export var nota_scene: PackedScene
-var score:int = 0
+var score:int
+var combo:int
 var nivel_path:String = "./assets/level/second_processed.lvl"
 var next_note_to_judge:int = 0
 
@@ -46,6 +47,7 @@ func _ready() -> void:
 	#print(notas)
 	
 	score = 0
+	combo = 0
 	
 	$Conductor.play()
 	
@@ -78,11 +80,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	var closest_note = queue[0]
 	var error = abs(song_pos_ms - closest_note[1])
 	
-	print("timing: ", closest_note[1], " error: ", error)
+	#print("timing: ", closest_note[1], " error: ", error)
 	
 	if error > judg_ms.BAD:
+		#print("ignored")
 		return # no hacer nada si el input no está dentro del timing windows
 	
+	combo += 1
+	print(judge(error))
+	print("score: ",score)
+	print("combo: ", combo)
 	queue.pop_front()
 	
 	# avisarle a la nota que se destruya
@@ -92,16 +99,22 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func judge(error) -> String:
 	if error <= judg_ms.MAX:
+		score += scores["MAX"]
 		return "MAX"
 	elif error <= judg_ms.PRF:
+		score += scores["Perfect"]
 		return "Perfect"
 	elif error <= judg_ms.EXC:
+		score += scores["Excellent"]
 		return "Excellent"
 	elif error <= judg_ms.GOOD:
+		score += scores["Good"]
 		return "Good"
 	elif error <= judg_ms.BAD:
+		score += scores["Good"]
 		return "Bad"
 	else:
+		# jamas va a entrar acá
 		return "Miss"
 
 func _spawn_note() -> void:
@@ -136,13 +149,19 @@ func _spawn_note() -> void:
 
 func _on_note_miss_type1() -> void:
 	if not note_queue1.is_empty():
+		miss_handle()
 		note_queue1.pop_front() # desencolar ultima nota
 	# resetear combo y toda la bola
 	# la nota se elimina solita
 
 func _on_note_miss_type2() -> void:
 	if not note_queue2.is_empty():
+		miss_handle()
 		note_queue2.pop_front()
+
+func miss_handle() -> void:
+	combo = 0
+	print("MISS!")
 
 func load_level(path: String) -> Array:
 	"""
