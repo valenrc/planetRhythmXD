@@ -13,13 +13,6 @@ enum judg_ms{ # timing windows en ms (kinda como los de osu pero sin OD)
 	GOOD = 127,
 	BAD = 200
 }
-const scores = {
-	"MAX": 320,
-	"Perfect": 300,
-	"Excellent": 200,
-	"Good": 100,
-	"Bad": 50
-}
 var n_scores = {	# cantidad de hits por juicio
 	"MAX" = 0,
 	"Perfect" = 0,
@@ -28,12 +21,59 @@ var n_scores = {	# cantidad de hits por juicio
 	"Bad" = 0
 }
 
+##### variables para calcular score
+# Score = BaseScore + BonusScore (score para cada nota)
+var score_const:float # (MaxScore * 0.5 / TotalNotes) 
+# BaseScore  = score_const * (NoteScore / 320)
+# BonusScore = score_const * (HitBonusValue * Sqrt(Bonus) / 320)
+# Bonus = Bonus before this hit + HitBonus - HitPunishment
+var bonus = 100 # limitado a [0,100]
+const max_score = 100000
+var total_notes
+const scores = {
+	"MAX": 320,
+	"Perfect": 300,
+	"Excellent": 200,
+	"Good": 100,
+	"Bad": 50,
+	"Miss": 0
+}
+const hit_bonus_values = {
+	"MAX": 32,
+	"Perfect": 32,
+	"Excellent": 16,
+	"Good": 8,
+	"Bad": 4,
+	"Miss": 0
+}
+const hit_bonus = {
+	"MAX": 2,
+	"Perfect": 1,
+	"Excellent": -8,
+	"Good": -24,
+	"Bad": -44,
+	"Miss": -INF
+}
+
+#### HP
+var hp:int
+const hp_values = {
+	"MAX": 15,
+	"Perfect": 10,
+	"Excellent": 5,
+	"Good": 1,
+	"Bad": 0,
+	"Miss":-20 
+}
+
+#####
 var note_speed:int = GlobalScripts.scroll_speed # tiempo en milisegundos de note speed
 var next_nota:int = 0     # contador de proxima nota a renderizar
 var notas:Array
 @export var nota_scene: PackedScene
-var score:int
-var combo:int
+#var score:int
+var score:float
+var combo:float
 var accuracy:float
 var nmisses:int
 var nivel_path:String = "./assets/level/second_processed.lvl"
@@ -46,18 +86,22 @@ func _ready() -> void:
 	# cargar nivel
 	notas = load_level(nivel_path)
 	
+	total_notes = notas.size()
+	score_const = max_score * 0.5 / total_notes
+	hp = 100 # hp inicial
+	
 	# configuración de nivel
 	$Conductor.bpm = 146
 	$Conductor.measures = 4
 	
-	score = 0
-	combo = 0
+	score = 0.0
+	combo = 0.0
 	nmisses = 0
 	
 	$Conductor.play()
 	
 func _process(delta: float) -> void:
-	if next_nota >= notas.size():
+	if next_nota >= total_notes:
 		return # se acabó el nivelazo
 
 	# posición de la canción en ms
@@ -95,12 +139,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	var juicio = judge(error)
 	update_measurements(juicio)
 	update_accuracy()
+	update_hp(juicio)
 	
 	################ PRINT PARA DEBUG
 	print(juicio)
-	print("score: ",score)
+	print("score: ",int(score))
 	print("combo: ", combo)
 	print("accuracy: ",accuracy*100)
+	print("hp: ", hp)
 	
 	queue.pop_front()
 	
@@ -125,8 +171,13 @@ func judge(error) -> String:
 
 func update_measurements(judgement:String) -> void:
 	if judgement in scores.keys():
-		score += scores[judgement]
+		update_score(judgement)
 		n_scores[judgement] += 1
+
+func update_score(judgement:String) -> void:
+	score += score_const * (scores[judgement] / 320.0) # base score
+	bonus = clampf(bonus + hit_bonus[judgement], 0.0, 100.0)
+	score += score_const * (hit_bonus_values[judgement] * sqrt(bonus) / 320.0) # + bonus score
 
 func update_accuracy() -> void:
 	# https://osu.ppy.sh/wiki/en/Gameplay/Accuracy#osu%21mania
@@ -137,6 +188,17 @@ func update_accuracy() -> void:
 	var n50 = n_scores["Bad"]
 	
 	accuracy = (300.0*(nmax + n300) + 200.0*n200 + 100.0*n100 + 50.0*n50) / (300.0*(nmax + n300 + n200 + n100 + n50 + nmisses))
+	
+func update_hp(judgement:String) -> void:
+	hp = clamp(hp + hp_values[judgement], 0, 100)
+	
+	if hp == 0: on_level_failed()
+		
+func on_level_failed() ->void:
+	# reventar todo y poner un menu para reiniciar o ir al menu prinicipal
+	# probablemente haya que usar una señal o algo asi para matar a todos los hijos
+	$Conductor.stop()
+	print("TERMINAR NIVEL")
 	
 func _spawn_note() -> void:
 	var nota_inst = nota_scene.instantiate()
@@ -182,7 +244,10 @@ func miss_handle() -> void:
 	combo = 0
 	nmisses += 1
 	update_accuracy()
+	update_hp("Miss")
 	print("MISS!")
+	print("accuracy: ", accuracy*100)
+	print("hp: ",hp)
 
 func load_level(path: String) -> Array:
 	"""
