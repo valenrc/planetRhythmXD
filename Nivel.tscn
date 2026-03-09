@@ -3,27 +3,313 @@
 [ext_resource type="Script" uid="uid://b0mrg76xe506t" path="res://Nivel.gd" id="1_xigpd"]
 [ext_resource type="PackedScene" uid="uid://kipm5tsp4fq2" path="res://conductor.tscn" id="2_8g3sk"]
 [ext_resource type="PackedScene" uid="uid://cuw1lmp16y21c" path="res://nota.tscn" id="2_bxp70"]
-[ext_resource type="Texture2D" uid="uid://cpus6w7tdbqpa" path="res://assets/img/Space Background.png" id="3_2027d"]
-[ext_resource type="AudioStream" uid="uid://eyn7v2v7hjmm" path="res://assets/music/tutorial.mp3" id="3_c4cy6"]
+[ext_resource type="PackedScene" uid="uid://bvusuegfr7qal" path="res://particulas_explosion.tscn" id="3_pyb3b"]
 [ext_resource type="Script" uid="uid://bmbaxet3shcp8" path="res://judgement_line.gd" id="4_0b6j0"]
-[ext_resource type="PackedScene" uid="uid://cvut3f7t0gohf" path="res://planeta.tscn" id="5_bxp70"]
+[ext_resource type="PackedScene" uid="uid://wapuk8me8g7d" path="res://particulas_hit.tscn" id="4_wv5gp"]
+[ext_resource type="Texture2D" uid="uid://cc7cpovptxjtx" path="res://assets/img/pixelart_starfield_corona.png" id="5_afnhb"]
+[ext_resource type="PackedScene" uid="uid://bqx5kp7m2nwda" path="res://planeta.tscn" id="5_bxp70"]
+[ext_resource type="FontFile" uid="uid://b0pffld06j8j6" path="res://Fonts/Fredoka-Regular.ttf" id="8_mhcqa"]
+[ext_resource type="Script" uid="uid://16kox4ye3jey" path="res://pausa_handle.gd" id="9_ewed5"]
+[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="9_uckt3"]
+[ext_resource type="Texture2D" uid="uid://d3yiaui35iu0h" path="res://assets/img/Planet_Pack_bycancer/sun.png" id="11_uckt3"]
+[ext_resource type="Script" uid="uid://dqlsgkvu3sn47" path="res://muerte_panel.gd" id="12_31wwp"]
+[ext_resource type="AudioStream" uid="uid://bt8rjdhrawb8a" path="res://assets/music/drum-hitnormalh.wav" id="14_afnhb"]
+[ext_resource type="AudioStream" uid="uid://c7ghld7yjidln" path="res://assets/music/heartbeat.wav" id="15_fhahl"]
+[ext_resource type="AudioStream" uid="uid://d14a6k6lsa31q" path="res://assets/music/soundreality-explosion-fx-343683.mp3" id="16_fhahl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y824p"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewed5"]
+bg_color = Color(0.3372549, 0.3372549, 0.3372549, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyb3b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uckt3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhahl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntxir"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv5gp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31wwp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afnhb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjur1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0kc2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o28eh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54fot"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Nivel" type="Control" unique_id=66676502]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_xigpd")
 nota_scene = ExtResource("2_bxp70")
+particulas_scene = ExtResource("3_pyb3b")
+particulas_hit_scene = ExtResource("4_wv5gp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=308820328]
+offset = Vector2(127.9, 120)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=171864515]
 layout_mode = 0
-offset_right = 256.0
-offset_bottom = 240.0
-texture = ExtResource("3_2027d")
+offset_right = 365.71426
+offset_bottom = 342.85712
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_afnhb")
 
 [node name="Conductor" parent="." unique_id=1837012458 instance=ExtResource("2_8g3sk")]
-stream = ExtResource("3_c4cy6")
+
+[node name="Sol" type="Sprite2D" parent="." unique_id=187778389]
+z_index = 1
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("11_uckt3")
 
 [node name="JudgementLine" type="Node2D" parent="." unique_id=515445338]
 script = ExtResource("4_0b6j0")
 
+[node name="Panel" type="Panel" parent="." unique_id=1433064860]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 240.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y824p")
+
 [node name="Planeta" parent="." unique_id=998955626 instance=ExtResource("5_bxp70")]
+z_index = 2
+
+[node name="score" type="Label" parent="." unique_id=923892299]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 3.9999998
+offset_right = 263.25
+offset_bottom = 30.75
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("8_mhcqa")
+text = "0"
+horizontal_alignment = 2
+
+[node name="accuracy" type="Label" parent="." unique_id=544518950]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 20.0
+offset_right = 285.75
+offset_bottom = 43.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("8_mhcqa")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="accuracy" unique_id=992657793]
+layout_mode = 0
+offset_left = 97.5
+offset_top = 7.0
+offset_right = 137.5
+offset_bottom = 30.0
+scale = Vector2(0.6, 0.6)
+text = "%"
+
+[node name="pausa_handle" type="Node" parent="." unique_id=2013148329]
+process_mode = 3
+script = ExtResource("9_ewed5")
+
+[node name="pausa_menu" type="Panel" parent="." unique_id=740133943]
+process_mode = 3
+visible = false
+z_index = 5
+layout_mode = 1
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 199.0
+offset_bottom = 173.0
+scale = Vector2(1.2, 1.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewed5")
+
+[node name="pausa" type="Label" parent="pausa_menu" unique_id=1819560870]
+process_mode = 3
+z_index = 6
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.666672
+offset_top = 10.000002
+offset_right = 25.333328
+offset_bottom = 33.0
+grow_horizontal = 2
+text = "PAUSE "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pausa_menu" unique_id=1852279469]
+layout_mode = 1
+offset_left = 57.5
+offset_top = 40.0
+offset_right = 133.5
+offset_bottom = 117.0
+scale = Vector2(0.8, 0.8)
+
+[node name="reanudar" type="Label" parent="pausa_menu/VBoxContainer" unique_id=1826687384]
+process_mode = 3
+z_index = 6
+layout_mode = 2
+focus_neighbor_left = NodePath("empty")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("empty")
+focus_neighbor_bottom = NodePath("../reset")
+focus_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pyb3b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uckt3")
+text = "Resume"
+
+[node name="reset" type="Label" parent="pausa_menu/VBoxContainer" unique_id=1395129933]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../salir")
+focus_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fhahl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ntxir")
+text = "Reset"
+
+[node name="salir" type="Label" parent="pausa_menu/VBoxContainer" unique_id=1987663716]
+process_mode = 3
+z_index = 6
+layout_mode = 2
+focus_neighbor_left = NodePath("empty")
+focus_neighbor_top = NodePath("../reset")
+focus_neighbor_right = NodePath("empty")
+focus_neighbor_bottom = NodePath("Empty")
+focus_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wv5gp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_31wwp")
+text = "Back"
+
+[node name="Panel2" type="Panel" parent="." unique_id=1153844687]
+layout_mode = 0
+offset_top = 240.0
+offset_right = 256.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_afnhb")
+script = ExtResource("12_31wwp")
+
+[node name="Label" type="Label" parent="Panel2" unique_id=418549075]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 40.0
+offset_right = 67.0
+offset_bottom = 89.0
+grow_horizontal = 2
+text = "Planeta olvidado"
+
+[node name="Label" type="Label" parent="Panel2/Label" unique_id=1063673148]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 43.0
+scale = Vector2(0.5, 0.5)
+text = "LO DIJE"
+
+[node name="reiniciar_muerte" type="Label" parent="Panel2" unique_id=1355286463]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 90.0
+offset_right = 148.0
+offset_bottom = 113.0
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../salir_muerte")
+focus_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xjur1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_w0kc2")
+text = "Reset"
+
+[node name="salir_muerte" type="Label" parent="Panel2" unique_id=881461506]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o28eh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_54fot")
+text = "Back"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1726009969]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="combo" type="Label" parent="CenterContainer" unique_id=908923562]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_uckt3")
+text = "x0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kick" type="AudioStreamPlayer2D" parent="." unique_id=1910295266]
+stream = ExtResource("14_afnhb")
+volume_db = 0.5
+
+[node name="bass" type="AudioStreamPlayer2D" parent="." unique_id=47832643]
+stream = ExtResource("15_fhahl")
+volume_db = -0.5
+
+[node name="tutorial" type="Label" parent="." unique_id=52195219]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("9_uckt3")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="." unique_id=1775234848]
+stream = ExtResource("16_fhahl")
+
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
+[connection signal="focus_entered" from="pausa_menu/VBoxContainer/reanudar" to="pausa_handle" method="_on_reanudar_focus_entered"]
+[connection signal="focus_exited" from="pausa_menu/VBoxContainer/reanudar" to="pausa_handle" method="_on_reanudar_focus_exited"]
+[connection signal="focus_entered" from="pausa_menu/VBoxContainer/reset" to="pausa_handle" method="_on_reset_focus_entered"]
+[connection signal="focus_exited" from="pausa_menu/VBoxContainer/reset" to="pausa_handle" method="_on_reset_focus_exited"]
+[connection signal="focus_entered" from="pausa_menu/VBoxContainer/salir" to="pausa_handle" method="_on_salir_focus_entered"]
+[connection signal="focus_exited" from="pausa_menu/VBoxContainer/salir" to="pausa_handle" method="_on_salir_focus_exited"]
+[connection signal="focus_entered" from="Panel2/reiniciar_muerte" to="Panel2" method="_on_reiniciar_muerte_focus_entered"]
+[connection signal="focus_exited" from="Panel2/reiniciar_muerte" to="Panel2" method="_on_reiniciar_muerte_focus_exited"]
+[connection signal="focus_entered" from="Panel2/salir_muerte" to="Panel2" method="_on_salir_muerte_focus_entered"]
+[connection signal="focus_exited" from="Panel2/salir_muerte" to="Panel2" method="_on_salir_muerte_focus_exited"]

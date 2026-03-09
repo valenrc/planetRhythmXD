@@ -20,6 +20,8 @@ var time_off_beat = 0.0
 signal beat(position)
 signal measure(position)
 
+var song: AudioStream # cancion eyeyey
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -47,3 +49,11 @@ func _report_beat():
 		current_measure += 1
 
 		#print("time: ",song_position, " time in beats: ", song_position_in_beats)
+		
+func _load_stream(path:String):
+	"""
+	El archivo mp3 de la canción debe tener el mismo nombre que el .lvl
+	"""
+	song = load(path)
+	stream = song
+	print(path)

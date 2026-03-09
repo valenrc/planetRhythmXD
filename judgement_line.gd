@@ -12,3 +12,4 @@ func _process(delta: float) -> void:
 	
 func _draw() -> void:
 	draw_arc(center, radio, 0, PI*2, 64, Color.WEB_GRAY, 0.5, true)
+	$".".modulate.a = 0.45

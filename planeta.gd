@@ -5,6 +5,7 @@ var speed = GlobalScripts.velocidad_planeta
 var amplitud = 100
 var desp_x
 var desp_y
+var muerte := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,11 +18,11 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	# agrego algo
-	position.x = amplitud*cos(t) + desp_x
-	position.y = amplitud*sin(t) + desp_y
-	
-	t += 1 * speed
-	if(t >= 2*PI):
-		t = 0
+	if muerte == false:
+		# agrego algo
+		position.x = amplitud*cos(t) + desp_x
+		position.y = amplitud*sin(t) + desp_y
+		
+		t += 1 * speed
+		if(t >= 2*PI):
+			t = 0

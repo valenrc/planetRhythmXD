@@ -1,5 +1,4 @@
-extends Node2D
-# no lo notas?
+extends Node2D# no lo notas?
 # no lo notas?!
 # ... eres un notas!
 

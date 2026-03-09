@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cuxw518ms4rwq"]
+
+[ext_resource type="Script" uid="uid://c81nc2kwmo5r2" path="res://endscreen.gd" id="1_dlbub"]
+[ext_resource type="Texture2D" uid="uid://cp8x0q3kf5mfm" path="res://assets/img/pixelart_starfield.png" id="1_gcvua"]
+[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlbub"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Control" type="Control" unique_id=298514417]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dlbub")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=68501430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 64.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_gcvua")
+
+[node name="results" type="Label" parent="." unique_id=1815965297]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 24.0
+offset_right = 34.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Results"
+
+[node name="flash" type="Panel" parent="." unique_id=2022152164]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -171.0
+offset_top = 64.0
+offset_right = 277.0
+offset_bottom = 87.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlbub")
+
+[node name="score" type="Label" parent="." unique_id=1924788777]
+layout_mode = 1
+offset_left = -154.0
+offset_top = 67.0
+offset_right = -79.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Score: 0"
+
+[node name="accuracy" type="Label" parent="." unique_id=1508000321]
+layout_mode = 0
+offset_left = -154.0
+offset_top = 120.0
+offset_right = -51.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Accuracy: 0"
+
+[node name="salir" type="Label" parent="." unique_id=1891030441]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -37.0
+offset_right = 24.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Back"
