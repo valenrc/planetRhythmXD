@@ -225,7 +225,7 @@ func _unhandled_input(event: InputEvent):
 			if rebind2 == false:
 				rebind_control2()
 		elif $Menu_canciones/Cancion1.has_focus():
-			GlobalScripts.nivel = "Spaced_Out"
+			GlobalScripts.nivel = "spaced_out"
 			play()
 		elif $Menu_canciones/Cancion2.has_focus():
 			GlobalScripts.nivel = "space_hardstyle"
@@ -283,7 +283,6 @@ func _unhandled_input(event: InputEvent):
 		if scroll_speed:
 			if not GlobalScripts.scroll_speed >= 20000:
 				GlobalScripts.scroll_speed += 100
-				print(GlobalScripts.scroll_speed)
 				$Menu_preferences/Scroll_speed/Label.text = str(GlobalScripts.scroll_speed / 1000.0)
 		if velocidad_planeta:
 			if not GlobalScripts.velocidad_planeta >= 0.2:
@@ -298,7 +297,6 @@ func _unhandled_input(event: InputEvent):
 		if scroll_speed:
 			if not GlobalScripts.scroll_speed <= 500:
 				GlobalScripts.scroll_speed -= 100
-				print(GlobalScripts.scroll_speed)
 				$Menu_preferences/Scroll_speed/Label.text = str(GlobalScripts.scroll_speed / 1000.0)
 		if velocidad_planeta:
 			if not GlobalScripts.velocidad_planeta <= 0.01:

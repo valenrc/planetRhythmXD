@@ -12,19 +12,18 @@ var last_reported_beat:int = 0	# último beat detectado
 var beats_before_start:int = 0	# cantidad de beats para simular antes de que empiece la canción
 var current_measure:int = 0	 # compás actual
 
-# Determining how close to the beat an event is
-var closest = 0.0
-var time_off_beat = 0.0
-
 # Señales para sincronizar el juego
 signal beat(position)
 signal measure(position)
 
 var song: AudioStream # cancion eyeyey
 
+var web_offset:float = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if OS.get_name() == "Web":
+		web_offset = 0.15
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,6 +31,7 @@ func _process(delta: float) -> void:
 		# https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
+		song_position -= web_offset
 		
 		# convierto el timing actual a la cantidad de beats ocurridos desde el inicio de la canción
 		#song_position_in_beats = int(floor(song_position / sec_per_beat)) + beats_before_start
@@ -56,4 +56,3 @@ func _load_stream(path:String):
 	"""
 	song = load(path)
 	stream = song
-	print(path)

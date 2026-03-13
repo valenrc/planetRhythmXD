@@ -94,8 +94,8 @@ func _ready() -> void:
 	tutorial_dialogo[0] = "Press " + GlobalScripts.Hit_tecla.to_upper() + " for yellow note."
 	tutorial_dialogo[1] = "Press " + GlobalScripts.Hit_tecla2.to_upper() + " for purple note."
 	
-	nivel_path = "assets/level/" + GlobalScripts.nivel + ".lvl"
-	song_path = "assets/music/" + GlobalScripts.nivel + ".mp3"
+	nivel_path = "res://assets/level/" + GlobalScripts.nivel + ".lvl"
+	song_path = "res://assets/music/" + GlobalScripts.nivel + ".mp3"
 	$Sol.position = get_viewport_rect().size / 2
 	# cargar nivel 
 	notas = load_level(nivel_path)
@@ -388,7 +388,7 @@ func mover_camara():
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_OUT)
 	$Panel2.muerte2 = true
-	print($Panel2.muerte2)
+	#print($Panel2.muerte2)
 	tween.tween_property($Camera2D, "offset", Vector2(127.9, 360), 1.4)
 
 func animacion_muerte():

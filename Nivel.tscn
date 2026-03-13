@@ -219,16 +219,16 @@ offset_top = 40.0
 offset_right = 67.0
 offset_bottom = 89.0
 grow_horizontal = 2
-text = "Planeta olvidado"
+text = "Planeta olvidado!"
 
 [node name="Label" type="Label" parent="Panel2/Label" unique_id=1063673148]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 20.0
-offset_right = 104.0
+offset_right = 114.0
 offset_bottom = 43.0
-scale = Vector2(0.5, 0.5)
-text = "LO DIJE"
+scale = Vector2(0.4, 0.4)
+text = "(LO DIJE)"
 
 [node name="reiniciar_muerte" type="Label" parent="Panel2" unique_id=1355286463]
 layout_mode = 0
