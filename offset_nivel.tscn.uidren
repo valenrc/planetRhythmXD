@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d23p10khujr66"]
+
+[ext_resource type="Script" uid="uid://c53wyojeve24i" path="res://offset_nivel.gd" id="1_7tjbr"]
+[ext_resource type="PackedScene" uid="uid://kipm5tsp4fq2" path="res://conductor.tscn" id="2_nkec7"]
+[ext_resource type="Script" uid="uid://qrmu1vdx8123" path="res://planeta_offset.gd" id="3_3e4kb"]
+[ext_resource type="Texture2D" uid="uid://ufsxanbl6uvx" path="res://assets/img/Planet_Pack_bycancer/moon.png" id="3_nkec7"]
+[ext_resource type="AudioStream" uid="uid://c7ghld7yjidln" path="res://assets/music/heartbeat.wav" id="5_gyawu"]
+[ext_resource type="AudioStream" uid="uid://bt8rjdhrawb8a" path="res://assets/music/drum-hitnormalh.wav" id="6_dgefa"]
+
+[node name="offsetNivel" type="Control" unique_id=788801013]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7tjbr")
+
+[node name="Conductor" parent="." unique_id=1837012458 instance=ExtResource("2_nkec7")]
+stream = null
+
+[node name="PlanetaOffset" type="Node2D" parent="." unique_id=370162318]
+script = ExtResource("3_3e4kb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlanetaOffset" unique_id=1685964094]
+position = Vector2(131, 112)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_nkec7")
+
+[node name="kick" type="AudioStreamPlayer2D" parent="." unique_id=891641423]
+stream = ExtResource("5_gyawu")
+
+[node name="bass" type="AudioStreamPlayer2D" parent="." unique_id=62103366]
+stream = ExtResource("6_dgefa")

@@ -11,3 +11,5 @@ var velocidad_planeta = 0.05
 var Hit_tecla := "f"
 var Hit_tecla2 := "j"
 var nivel:String
+
+var global_offset:int = 0 # offset visual en milisegundos
