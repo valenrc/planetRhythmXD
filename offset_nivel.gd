@@ -47,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var promedio = offset_calibrate()
 		#print(promedio)
 		$CenterContainer/Label.text = str(snapped(promedio, 0.1)) + " ms"
-	if event.is_action_pressed("backspace"):
+	if event.is_action_pressed("backspace") and not finished:
 		get_tree().change_scene_to_file("res://main.tscn")
 	if event.is_action_pressed("back") and finished:
 		get_tree().change_scene_to_file("res://main.tscn")
