@@ -328,7 +328,7 @@ func load_level(path: String) -> Array:
 			if row_data.size() == 3 and row_data[0] != "":
 				var note_id: int = int(row_data[0])
 				var note_type: int = int(row_data[1])
-				var timing: int = int(row_data[2])
+				var timing: int = int(row_data[2]) + GlobalScripts.global_offset
 				var spawn: int = timing - note_speed
 				var note_data: PackedInt32Array = PackedInt32Array([note_id, note_type, timing, spawn])
 				data.push_back(note_data)
@@ -444,8 +444,8 @@ func _input(event: InputEvent) -> void:
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_EXPO)
 			tween.set_ease(Tween.EASE_OUT)
-			tween.tween_property($Planeta/Sprite2D, "scale", Vector2(0.06,0.06), 0.34)
-			tween.tween_property($Planeta/Sprite2D, "scale", Vector2(0.05,0.05), 0.34)
+			tween.tween_property($Planeta/Sprite2D, "scale", Vector2(0.06,0.06), 0.2)
+			tween.tween_property($Planeta/Sprite2D, "scale", Vector2(0.05,0.05), 0.1)
 
 
 func _on_conductor_finished() -> void:
