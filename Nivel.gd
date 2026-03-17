@@ -142,6 +142,8 @@ func _process(delta: float) -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	var queue: Array
+	if event.is_action_pressed("cheat epico"):
+		_on_conductor_finished()
 	if event.is_action_pressed("note_input_1"):
 		$bass.play()
 		queue = note_queue1
@@ -224,6 +226,7 @@ func update_accuracy() -> void:
 	
 	accuracy = (300.0*(nmax + n300) + 200.0*n200 + 100.0*n100 + 50.0*n50) / (300.0*(nmax + n300 + n200 + n100 + n50 + nmisses))
 	$accuracy.text = str(snapped(accuracy * 100, 0.01))
+	print(accuracy)
 	
 func update_hp(judgement:String) -> void:
 	hp = clamp(hp + hp_values[judgement], 0, 100)
@@ -452,6 +455,18 @@ func _on_conductor_finished() -> void:
 	GlobalScripts.accuracy = accuracy
 	GlobalScripts.score = score
 	#print("nivel superado")
+	if GlobalScripts.nivel == "flow":
+		if score > int(GlobalScripts.score_stats[0]):
+			GlobalScripts.score_stats[0] = int(score)
+			GlobalScripts.accuracy_stats[0] = snapped(GlobalScripts.accuracy * 100, 0.01)
+	if GlobalScripts.nivel == "Spaced_Out":
+		if score > int(GlobalScripts.score_stats[1]):
+			GlobalScripts.score_stats[1] = int(score)
+			GlobalScripts.accuracy_stats[1] = snapped(GlobalScripts.accuracy * 100, 0.01)
+	if GlobalScripts.nivel == "space_hardstyle":
+		if score > int(GlobalScripts.score_stats[2]):
+			GlobalScripts.score_stats[2] = int(score)
+			GlobalScripts.accuracy_stats[2] = snapped(GlobalScripts.accuracy * 100, 0.01)
 	get_tree().change_scene_to_file("res://endscreen.tscn")
 
 func tutorial_printer(label:String):

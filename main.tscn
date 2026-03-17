@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://52n471l80yxa" path="res://Fonts/Fredoka-SemiBold.ttf" id="5_02txq"]
 [ext_resource type="Texture2D" uid="uid://cc7cpovptxjtx" path="res://assets/img/pixelart_starfield_corona.png" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bfiana2i5ojrd" path="res://label.gd" id="7_272bh"]
+[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://4xxintd5dub3" path="res://label_hit2.gd" id="8_5vw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_getpj"]
@@ -119,6 +120,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miypg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6jrf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsp4k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuqvo"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaehf"]
@@ -362,6 +372,15 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Tutorial"
 
+[node name="rank" type="Label" parent="Menu_canciones/Tutorial" unique_id=1213475527]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 185.0
+offset_bottom = 20.0
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("8_4c57u")
+
 [node name="Cancion1" type="Button" parent="Menu_canciones" unique_id=1408312734]
 layout_mode = 0
 offset_left = -135.0
@@ -389,15 +408,35 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Spaced Out"
 
+[node name="rank" type="Label" parent="Menu_canciones/Cancion1" unique_id=90554949]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 185.0
+offset_bottom = 20.0
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("8_4c57u")
+
 [node name="Cancion2" type="Button" parent="Menu_canciones" unique_id=1003233559]
 layout_mode = 0
 offset_left = -135.0
 offset_top = 135.0
 offset_bottom = 166.0
+focus_neighbor_left = NodePath("Empty")
+focus_neighbor_right = NodePath("Empty")
 mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_d13ii")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1u8w0")
 text = "Space Hardstyle"
+
+[node name="rank" type="Label" parent="Menu_canciones/Cancion2" unique_id=1655280257]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 5.0
+offset_right = 185.0
+offset_bottom = 20.0
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("8_4c57u")
 
 [node name="Menu_opciones" type="Panel" parent="." unique_id=599050569]
 self_modulate = Color(1, 1, 1, 0.24313726)
@@ -445,7 +484,7 @@ offset_bottom = 105.0
 grow_horizontal = 2
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
-focus_neighbor_bottom = NodePath("../skins")
+focus_neighbor_bottom = NodePath("../offset_cali")
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_02txq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1mbx4")
@@ -460,10 +499,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -14.0
-offset_top = 125.0
-offset_right = 15.0
-offset_bottom = 145.0
+offset_left = -17.0
+offset_top = 154.0
+offset_right = 21.0
+offset_bottom = 174.0
 grow_horizontal = 2
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
@@ -475,6 +514,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_xxdhm")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_754t4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_miypg")
 text = "Skins"
+
+[node name="offset_cali" type="Button" parent="Menu_opciones" unique_id=196445929]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 115.0
+offset_right = 199.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a6jrf")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qsp4k")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xuqvo")
+text = "Offset Calibrator"
 
 [node name="Menu_preferences" type="Panel" parent="." unique_id=895999482]
 self_modulate = Color(1, 1, 1, 0.24313726)
@@ -660,6 +711,46 @@ offset_right = 30.0
 offset_bottom = 11.0
 grow_vertical = 2
 
+[node name="stats" type="Panel" parent="." unique_id=1669618603]
+visible = false
+layout_mode = 0
+offset_left = 150.0
+offset_right = 256.0
+offset_bottom = 51.0
+
+[node name="high_score" type="Label" parent="stats" unique_id=720789203]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 27.0
+scale = Vector2(0.6, 0.6)
+text = "High score: 000000"
+
+[node name="accuracy" type="Label" parent="stats" unique_id=524119723]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 138.0
+offset_bottom = 41.0
+scale = Vector2(0.6, 0.6)
+text = "Accuracy: 00.0%"
+
+[node name="rank" type="Label" parent="stats" unique_id=1007496888]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 32.0
+offset_right = 65.0
+offset_bottom = 55.0
+scale = Vector2(0.6, 0.6)
+text = "Rank:"
+
+[node name="Label" type="Label" parent="stats/rank" unique_id=1119930676]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 62.0
+offset_bottom = 23.0
+
 [connection signal="rebind_tecla" from="." to="Menu_controles/Button/Label/Label" method="_on_control_rebind_tecla"]
 [connection signal="focus_entered" from="Start_menu/play" to="." method="_on_play_focus_entered"]
 [connection signal="focus_exited" from="Start_menu/play" to="." method="_on_play_focus_exited"]
@@ -669,6 +760,7 @@ grow_vertical = 2
 [connection signal="focus_exited" from="Start_menu/quit" to="." method="_on_quit_focus_exited"]
 [connection signal="focus_entered" from="Menu_canciones/Tutorial" to="." method="_on_tutorial_focus_entered"]
 [connection signal="focus_entered" from="Menu_canciones/Cancion1" to="." method="_on_cancion_1_focus_entered"]
+[connection signal="focus_entered" from="Menu_canciones/Cancion2" to="." method="_on_cancion_2_focus_entered"]
 [connection signal="focus_entered" from="Menu_opciones/preferences" to="." method="_on_preferences_focus_entered"]
 [connection signal="focus_exited" from="Menu_opciones/preferences" to="." method="_on_preferences_focus_exited"]
 [connection signal="focus_entered" from="Menu_opciones/control" to="." method="_on_test_focus_entered"]
@@ -677,6 +769,8 @@ grow_vertical = 2
 [connection signal="focus_exited" from="Menu_opciones/control" to="." method="_on_control_focus_exited"]
 [connection signal="focus_entered" from="Menu_opciones/skins" to="." method="_on_test_2_focus_entered"]
 [connection signal="focus_exited" from="Menu_opciones/skins" to="." method="_on_test_2_focus_exited"]
+[connection signal="focus_entered" from="Menu_opciones/offset_cali" to="." method="_on_offset_cali_focus_entered"]
+[connection signal="focus_exited" from="Menu_opciones/offset_cali" to="." method="_on_offset_cali_focus_exited"]
 [connection signal="focus_entered" from="Menu_preferences/Scroll_speed" to="." method="_on_scroll_speed_focus_entered"]
 [connection signal="focus_exited" from="Menu_preferences/Scroll_speed" to="." method="_on_scroll_speed_focus_exited"]
 [connection signal="focus_entered" from="Menu_preferences/Velocidad_planeta" to="." method="_on_velocidad_planeta_focus_entered"]

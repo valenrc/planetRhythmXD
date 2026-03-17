@@ -8,7 +8,8 @@ var finished:bool = false
 var beats = 0
 
 func _ready() -> void:
-	$Text.text = "Press " + (GlobalScripts.Hit_tecla).to_upper() + " or " + (GlobalScripts.Hit_tecla2).to_upper() + " to the beat"
+	$CenterContainer2/Text.show()
+	$CenterContainer2/Text.text = "Press " + (GlobalScripts.Hit_tecla).to_upper() + " or " + (GlobalScripts.Hit_tecla2).to_upper() + " to the beat"
 	
 	beat_interval_ms = 60.0 / bpm * 1000.0
 	
@@ -30,6 +31,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("note_input_1") or event.is_action_pressed("note_input_2"):
 		if finished:
 			return
+			
+		$CenterContainer2/Text.hide()
 		$PlanetaOffset.beat()
 		
 		var song_pos_ms = $Conductor.song_position * 1000.0
@@ -37,13 +40,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		var error = song_pos_ms - next_beat_ms
 		#print(error)
 		
-		if abs(error) > 200.0:
+		if abs(error) > 350.0:
 			return
 		
 		offsets.append(error)
 		var promedio = offset_calibrate()
 		#print(promedio)
-		$Label.text = str(snapped(promedio, 0.1)) + " ms"
+		$CenterContainer/Label.text = str(snapped(promedio, 0.1)) + " ms"
+	if event.is_action_pressed("backspace"):
+		get_tree().change_scene_to_file("res://main.tscn")
+	if event.is_action_pressed("back") and finished:
+		get_tree().change_scene_to_file("res://main.tscn")
 
 func offset_calibrate():
 	var sum = 0.0
@@ -55,8 +62,8 @@ func offset_calibrate():
 func _on_conductor_finished() -> void:
 	# acabar con todo
 	finished = true
+	$CenterContainer2/Text.show()
+	$CenterContainer2/Text.text = "Offset saved \n Press X to leave"
 	if not offsets.is_empty():
-		GlobalScripts.global_offset = offset_calibrate()
+		GlobalScripts.global_offset = offset_calibrate() 
 	
-	############ cambiar la escena al menu anterior
-	print("FINISHED")

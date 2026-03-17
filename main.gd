@@ -36,6 +36,7 @@ func controles_menu():
 	puede = false
 
 func start():
+	$stats.hide()
 	puede = true
 	escenas_menu = 1
 	$Menu_skins/Label.position = Vector2(228, 108)
@@ -66,6 +67,7 @@ func rebind_control2():
 
 
 func Canciones_menu():
+	$stats.show()
 	escenas_menu += 1
 	anterior_escena = "menu"
 	$Menu_preferences.hide()
@@ -83,6 +85,7 @@ func Canciones_menu():
 
 
 func Opciones_menu():
+	$Menu_opciones/offset_cali.disabled = true
 	rebind2 = false
 	scroll_speed = false
 	skin_menu = false
@@ -136,7 +139,49 @@ func _ready() -> void:
 	$Menu_skins/Label.text = ">"
 	$Start_menu/options.modulate.a = 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if GlobalScripts.completado[0]:
+		$Menu_canciones/Tutorial/rank.text = str(GlobalScripts.rank_stats[0])
+		if GlobalScripts.rank_stats[0] == "D":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(0.537, 0.537, 0.537, 1.0))
+		elif GlobalScripts.rank_stats[0] == "C":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(0.0, 0.649, 0.209, 1.0))
+		elif GlobalScripts.rank_stats[0] == "B":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[0] == "A":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(0.78, 0.432, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[0] == "S":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(0.917, 0.0, 0.104, 1.0))
+		elif GlobalScripts.rank_stats[0] == "SS":
+			$Menu_canciones/Tutorial/rank.add_theme_color_override("font_color", Color(0.886, 0.699, 0.0, 1.0))
+	if GlobalScripts.completado[1]:
+		$Menu_canciones/Cancion1/rank.text = str(GlobalScripts.rank_stats[1])
+		if GlobalScripts.rank_stats[1] == "D":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(0.537, 0.537, 0.537, 1.0))
+		elif GlobalScripts.rank_stats[1] == "C":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(0.0, 0.649, 0.209, 1.0))
+		elif GlobalScripts.rank_stats[1] == "B":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[1] == "A":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(0.78, 0.432, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[1] == "S":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(0.917, 0.0, 0.104, 1.0))
+		elif GlobalScripts.rank_stats[1] == "SS":
+			$Menu_canciones/Cancion1/rank.add_theme_color_override("font_color", Color(0.886, 0.699, 0.0, 1.0))
+	if GlobalScripts.completado[2]:
+		$Menu_canciones/Cancion2/rank.text = str(GlobalScripts.rank_stats[2])
+		if GlobalScripts.rank_stats[2] == "D":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(0.537, 0.537, 0.537, 1.0))
+		elif GlobalScripts.rank_stats[2] == "C":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(0.0, 0.649, 0.209, 1.0))
+		elif GlobalScripts.rank_stats[2] == "B":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(1.0, 1.0, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[2] == "A":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(0.78, 0.432, 0.0, 1.0))
+		elif GlobalScripts.rank_stats[2] == "S":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(0.917, 0.0, 0.104, 1.0))
+		elif GlobalScripts.rank_stats[2] == "SS":
+			$Menu_canciones/Cancion2/rank.add_theme_color_override("font_color", Color(0.886, 0.699, 0.0, 1.0))
 
 func _process(delta: float) -> void:
 	if skin_menu:
@@ -232,6 +277,8 @@ func _unhandled_input(event: InputEvent):
 			play()
 		elif $Start_menu/quit.has_focus():
 			get_tree().quit()
+		elif $Menu_opciones/offset_cali.has_focus():
+			get_tree().change_scene_to_file("res://offset_nivel.tscn")
 
 	if event.is_action_pressed("back"):
 		if escenas_menu > 1:
@@ -364,3 +411,27 @@ func _on_velocidad_planeta_focus_exited() -> void:
 	velocidad_planeta = false
 	$Menu_preferences/Velocidad_planeta/Label.add_theme_color_override("font_color", Color(1, 1, 1, 0.5))
 	$Menu_preferences/Velocidad_planeta.add_theme_color_override("font_color", Color(1, 1, 1, 0.5))
+
+func _on_tutorial_focus_entered() -> void:
+	$stats/high_score.text = str("High score: ", GlobalScripts.score_stats[0])
+	$stats/accuracy.text = str("Accuracy: ", GlobalScripts.accuracy_stats[0], "%")
+	$stats/rank.text = str("Rank: ", GlobalScripts.rank_stats[0])
+
+func _on_cancion_1_focus_entered() -> void:
+	$stats/high_score.text = str("High score: ", GlobalScripts.score_stats[1])
+	$stats/accuracy.text = str("Accuracy: ", GlobalScripts.accuracy_stats[1], "%")
+	$stats/rank.text = str("Rank: ", GlobalScripts.rank_stats[1])
+
+func _on_cancion_2_focus_entered() -> void:
+	$stats/high_score.text = str("High score: ", GlobalScripts.score_stats[2])
+	$stats/accuracy.text = str("Accuracy: ", GlobalScripts.accuracy_stats[2], "%")
+	$stats/rank.text = str("Rank: ", GlobalScripts.rank_stats[2])
+
+
+func _on_offset_cali_focus_entered() -> void:
+	$Menu_opciones/offset_cali.grab_focus()
+	$Menu_opciones/offset_cali.disabled = false
+
+
+func _on_offset_cali_focus_exited() -> void:
+	$Menu_opciones/offset_cali.disabled = true

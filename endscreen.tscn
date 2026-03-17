@@ -3,8 +3,14 @@
 [ext_resource type="Script" uid="uid://c81nc2kwmo5r2" path="res://endscreen.gd" id="1_dlbub"]
 [ext_resource type="Texture2D" uid="uid://cp8x0q3kf5mfm" path="res://assets/img/pixelart_starfield.png" id="1_gcvua"]
 [ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
+[ext_resource type="AudioStream" uid="uid://bj8f5temfyi7i" path="res://assets/music/score.mp3" id="4_k7cnj"]
+[ext_resource type="AudioStream" uid="uid://cf7og2byeregr" path="res://assets/level/final_score.mp3" id="5_nxgh7"]
+[ext_resource type="AudioStream" uid="uid://bih2jkfsyednt" path="res://assets/music/Re_ Beautiful Morning.mp3" id="6_5ywda"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlbub"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7cnj"]
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Control" type="Control" unique_id=298514417]
@@ -84,3 +90,37 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_dlbub")
 text = "Back"
+
+[node name="Panel" type="Panel" parent="." unique_id=1206500877]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 181.0
+offset_top = 55.0
+offset_right = 244.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7cnj")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=550477353]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.6, 1.6)
+
+[node name="FinalScore" type="Label" parent="Panel/CenterContainer" unique_id=1037164015]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "D"
+metadata/_edit_lock_ = true
+
+[node name="score2" type="AudioStreamPlayer2D" parent="." unique_id=268609964]
+stream = ExtResource("4_k7cnj")
+volume_db = 5.0
+
+[node name="final score" type="AudioStreamPlayer2D" parent="." unique_id=542442471]
+stream = ExtResource("5_nxgh7")
+volume_db = 5.0
+
+[node name="BG_music" type="AudioStreamPlayer2D" parent="." unique_id=845981014]
+stream = ExtResource("6_5ywda")
+parameters/looping = true
