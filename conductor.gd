@@ -18,21 +18,15 @@ signal measure(position)
 
 var song: AudioStream # cancion eyeyey
 
-var web_offset:float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sec_per_beat = 60.0 / bpm
-	if OS.get_name() == "Web":
-		web_offset = 0.15
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if playing:
-		# https://docs.godotengine.org/en/stable/tutorials/audio/sync_with_audio.html
-		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
-		song_position -= AudioServer.get_output_latency()
-		song_position -= web_offset
+		song_position = get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()
 		
 		# convierto el timing actual a la cantidad de beats ocurridos desde el inicio de la canción
 		song_position_in_beats = int(floor(song_position / sec_per_beat)) + beats_before_start

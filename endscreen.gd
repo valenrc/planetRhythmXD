@@ -1,7 +1,7 @@
 extends Control
 var animacion_terminada := false
+var tween: Tween
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BG_music.play()
 	await get_tree().create_timer(0.5).timeout
@@ -32,7 +32,7 @@ func _ready() -> void:
 		if GlobalScripts.score > int(GlobalScripts.score_stats[0]):
 			GlobalScripts.completado[0] = true
 			GlobalScripts.rank_stats[0] = str($Panel/CenterContainer/FinalScore.text)
-	if GlobalScripts.nivel == "Spaced_Out":
+	if GlobalScripts.nivel == "spaced_out":
 		if GlobalScripts.score > int(GlobalScripts.score_stats[1]):
 			GlobalScripts.completado[1] = true
 			GlobalScripts.rank_stats[1] = str($Panel/CenterContainer/FinalScore.text)
@@ -41,8 +41,7 @@ func _ready() -> void:
 			GlobalScripts.completado[2] = true
 			GlobalScripts.rank_stats[2] = str($Panel/CenterContainer/FinalScore.text)
 	
-	
-	var tween = create_tween()
+	tween = create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
 
@@ -50,7 +49,6 @@ func _ready() -> void:
 	tween.tween_property($flash, "modulate:a", 0.7, 0.1)
 	tween.tween_callback(func(): $score2.play())
 	tween.tween_property($flash, "modulate:a", 0, 1.1)
-
 
 	tween.tween_property($accuracy, "position", Vector2(19,$accuracy.position.y), 0.5)
 
@@ -60,14 +58,27 @@ func _ready() -> void:
 	tween.tween_callback(func(): $score2.play())
 	tween.tween_property($flash, "modulate:a", 0, 1.1)
 	tween.tween_property($Panel, "modulate:a", 1, 0)
-	tween.tween_property($Panel, "self_modulate:a", 1, 0)
+	tween.tween_property($Pane_skip_animacionl, "self_modulate:a", 1, 0)
 	tween.tween_callback(func(): $"final score".play())
 	tween.tween_property($Panel, "self_modulate:a", 0, 1.12)
 	tween.tween_property($salir, "modulate:a", 1, 1.1)
 	
+	tween.finished.connect(func(): animacion_terminada = true)
+
+func _skip_animacion() -> void:
+	if tween and tween.is_running():
+		tween.kill()
+	$score.position.x = 19
+	$accuracy.position.x = 19
+	$flash.modulate.a = 0
+	$Panel.modulate.a = 1
+	$Panel.self_modulate.a = 0
+	$salir.modulate.a = 1
 	animacion_terminada = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	if animacion_terminada == true:
-		if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept"):
+		if animacion_terminada:
 			get_tree().change_scene_to_file("res://main.tscn")
+		else:
+			_skip_animacion()

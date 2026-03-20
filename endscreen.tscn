@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cp8x0q3kf5mfm" path="res://assets/img/pixelart_starfield.png" id="1_gcvua"]
 [ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
 [ext_resource type="AudioStream" uid="uid://bj8f5temfyi7i" path="res://assets/music/score.mp3" id="4_k7cnj"]
-[ext_resource type="AudioStream" uid="uid://cf7og2byeregr" path="res://assets/level/final_score.mp3" id="5_nxgh7"]
+[ext_resource type="AudioStream" uid="uid://m5df3pdfdwn6" path="res://assets/music/final_score.mp3" id="5_nxgh7"]
 [ext_resource type="AudioStream" uid="uid://bih2jkfsyednt" path="res://assets/music/Re_ Beautiful Morning.mp3" id="6_5ywda"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlbub"]

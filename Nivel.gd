@@ -91,11 +91,12 @@ var note_queue2: Array = []
 var tutorial_dialogo:Array = ["",""]
 
 func _ready() -> void:
+	#$Offset.text = str(GlobalScripts.global_offset)
 	tutorial_dialogo[0] = "Press " + GlobalScripts.Hit_tecla.to_upper() + " for yellow note."
 	tutorial_dialogo[1] = "Press " + GlobalScripts.Hit_tecla2.to_upper() + " for purple note."
 	
 	nivel_path = "res://assets/level/" + GlobalScripts.nivel + ".lvl"
-	song_path = "res://assets/music/" + GlobalScripts.nivel + ".mp3"
+	song_path = "res://assets/music/" + GlobalScripts.nivel + ".ogg"
 	$Sol.position = get_viewport_rect().size / 2
 	# cargar nivel 
 	notas = load_level(nivel_path)
@@ -226,7 +227,6 @@ func update_accuracy() -> void:
 	
 	accuracy = (300.0*(nmax + n300) + 200.0*n200 + 100.0*n100 + 50.0*n50) / (300.0*(nmax + n300 + n200 + n100 + n50 + nmisses))
 	$accuracy.text = str(snapped(accuracy * 100, 0.01))
-	print(accuracy)
 	
 func update_hp(judgement:String) -> void:
 	hp = clamp(hp + hp_values[judgement], 0, 100)
@@ -459,7 +459,7 @@ func _on_conductor_finished() -> void:
 		if score > int(GlobalScripts.score_stats[0]):
 			GlobalScripts.score_stats[0] = int(score)
 			GlobalScripts.accuracy_stats[0] = snapped(GlobalScripts.accuracy * 100, 0.01)
-	if GlobalScripts.nivel == "Spaced_Out":
+	if GlobalScripts.nivel == "spaced_out":
 		if score > int(GlobalScripts.score_stats[1]):
 			GlobalScripts.score_stats[1] = int(score)
 			GlobalScripts.accuracy_stats[1] = snapped(GlobalScripts.accuracy * 100, 0.01)
