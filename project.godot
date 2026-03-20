@@ -15,6 +15,13 @@ run/main_scene="uid://chsrbamp7ohfl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+driver/output_latency=10
+driver/output_latency.web=35
+driver/mix_rate=48000
+
 [autoload]
 
 GlobalScripts="*uid://dsppr27qm2axm"
@@ -109,3 +116,4 @@ note_input_2={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
