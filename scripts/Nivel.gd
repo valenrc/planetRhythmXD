@@ -83,6 +83,7 @@ var rotate := false
 var nivel_path:String
 var song_path: String
 var next_note_to_judge:int = 0
+var bpm
 
 var note_queue1: Array = []  # FIFO para manejar las notas activas en el nivel
 var note_queue2: Array = []
@@ -106,8 +107,10 @@ func _ready() -> void:
 	hp = 100 # hp inicial
 	
 	# configuración de nivel
-	$Conductor.bpm = 146
+	$Conductor.bpm = bpm
+	print(bpm)
 	$Conductor.measures = 4
+	$Conductor.sec_per_beat = 60.0 / bpm
 	
 	$Conductor._load_stream(song_path)
 	
@@ -314,10 +317,14 @@ func load_level(path: String) -> Array:
 		return data
 
 	var in_notes: bool = false
+	var in_metadata:bool = false
 	
 	while not nivel_file.eof_reached():
 		var raw_line: String = nivel_file.get_line()
 		var line: String = raw_line.strip_edges()
+		
+		if line == "#METADATA":
+			in_metadata = true
 		
 		if line == "#NOTES":
 			in_notes = true
@@ -325,6 +332,9 @@ func load_level(path: String) -> Array:
 		
 		if line == "#ENDNOTES":
 			break
+			
+		if in_metadata and line.begins_with("bpm:"):
+			bpm = int(line.split(":",false,1)[1].strip_edges())
 		
 		if in_notes and line != "":
 			var row_data: PackedStringArray = line.split(",", false)

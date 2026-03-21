@@ -21,7 +21,8 @@ var song: AudioStream # cancion eyeyey
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sec_per_beat = 60.0 / bpm
+	#sec_per_beat = 60.0 / float(bpm)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

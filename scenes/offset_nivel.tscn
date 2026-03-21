@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ufsxanbl6uvx" path="res://assets/img/Planet_Pack_bycancer/moon.png" id="3_nkec7"]
 [ext_resource type="AudioStream" uid="uid://c7ghld7yjidln" path="res://assets/music/heartbeat.wav" id="5_gyawu"]
 [ext_resource type="AudioStream" uid="uid://bt8rjdhrawb8a" path="res://assets/music/drum-hitnormalh.wav" id="6_dgefa"]
-[ext_resource type="FontFile" uid="uid://b0pffld06j8j6" path="res://fonts/Fredoka-Regular.ttf" id="8_4emvx"]
+[ext_resource type="FontFile" uid="uid://b0pffld06j8j6" path="res://Fonts/Fredoka-Regular.ttf" id="8_4emvx"]
 
 [node name="offsetNivel" type="Control" unique_id=788801013]
 layout_mode = 3
@@ -22,7 +22,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_dgefa")
 
 [node name="Conductor" parent="." unique_id=1837012458 instance=ExtResource("2_nkec7")]
-stream = null
 
 [node name="PlanetaOffset" type="Node2D" parent="." unique_id=370162318]
 script = ExtResource("3_3e4kb")
