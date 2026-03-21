@@ -24,7 +24,7 @@ driver/mix_rate=48000
 
 [autoload]
 
-GlobalScripts="*uid://dsppr27qm2axm"
+GlobalScripts="*res://scenes/global_scripts.tscn"
 
 [display]
 
