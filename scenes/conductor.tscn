@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://kipm5tsp4fq2"]
+
+[ext_resource type="AudioStream" uid="uid://dxbsbndcgsday" path="res://assets/music/spaced_out.mp3" id="1_lxg7y"]
+[ext_resource type="Script" uid="uid://bs526qsaggval" path="res://scripts/conductor.gd" id="1_rjrga"]
+
+[node name="Conductor" type="AudioStreamPlayer" unique_id=1837012458]
+stream = ExtResource("1_lxg7y")
+script = ExtResource("1_rjrga")
+bpm = 146

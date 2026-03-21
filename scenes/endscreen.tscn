@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cuxw518ms4rwq"]
+
+[ext_resource type="Script" uid="uid://c81nc2kwmo5r2" path="res://scripts/endscreen.gd" id="1_dlbub"]
+[ext_resource type="Texture2D" uid="uid://cp8x0q3kf5mfm" path="res://assets/img/pixelart_starfield.png" id="1_gcvua"]
+[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
+[ext_resource type="AudioStream" uid="uid://bj8f5temfyi7i" path="res://assets/music/score.mp3" id="4_k7cnj"]
+[ext_resource type="AudioStream" uid="uid://m5df3pdfdwn6" path="res://assets/music/final_score.mp3" id="5_nxgh7"]
+[ext_resource type="AudioStream" uid="uid://bih2jkfsyednt" path="res://assets/music/Re_ Beautiful Morning.mp3" id="6_5ywda"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlbub"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7cnj"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Control" type="Control" unique_id=298514417]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dlbub")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=68501430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 64.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_gcvua")
+
+[node name="results" type="Label" parent="." unique_id=1815965297]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 24.0
+offset_right = 34.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Results"
+
+[node name="flash" type="Panel" parent="." unique_id=2022152164]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -171.0
+offset_top = 64.0
+offset_right = 277.0
+offset_bottom = 87.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlbub")
+
+[node name="score" type="Label" parent="." unique_id=1924788777]
+layout_mode = 1
+offset_left = -154.0
+offset_top = 67.0
+offset_right = -79.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Score: 0"
+
+[node name="accuracy" type="Label" parent="." unique_id=1508000321]
+layout_mode = 0
+offset_left = -154.0
+offset_top = 120.0
+offset_right = -51.0
+offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Accuracy: 0"
+
+[node name="salir" type="Label" parent="." unique_id=1891030441]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -37.0
+offset_right = 24.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "Back"
+
+[node name="Panel" type="Panel" parent="." unique_id=1206500877]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 181.0
+offset_top = 55.0
+offset_right = 244.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7cnj")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel" unique_id=550477353]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.6, 1.6)
+
+[node name="FinalScore" type="Label" parent="Panel/CenterContainer" unique_id=1037164015]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dlbub")
+text = "D"
+metadata/_edit_lock_ = true
+
+[node name="score2" type="AudioStreamPlayer2D" parent="." unique_id=268609964]
+stream = ExtResource("4_k7cnj")
+volume_db = 5.0
+
+[node name="final score" type="AudioStreamPlayer2D" parent="." unique_id=542442471]
+stream = ExtResource("5_nxgh7")
+volume_db = 5.0
+
+[node name="BG_music" type="AudioStreamPlayer2D" parent="." unique_id=845981014]
+stream = ExtResource("6_5ywda")
+parameters/looping = true
