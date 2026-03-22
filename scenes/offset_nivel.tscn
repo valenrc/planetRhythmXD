@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ufsxanbl6uvx" path="res://assets/img/Planet_Pack_bycancer/moon.png" id="3_nkec7"]
 [ext_resource type="AudioStream" uid="uid://c7ghld7yjidln" path="res://assets/music/heartbeat.wav" id="5_gyawu"]
 [ext_resource type="AudioStream" uid="uid://bt8rjdhrawb8a" path="res://assets/music/drum-hitnormalh.wav" id="6_dgefa"]
-[ext_resource type="FontFile" uid="uid://b0pffld06j8j6" path="res://Fonts/Fredoka-Regular.ttf" id="8_4emvx"]
+[ext_resource type="FontFile" uid="uid://b3b7xrb8e1d0x" path="res://Fonts/DigitalDisco.ttf" id="8_iysqm"]
 
 [node name="offsetNivel" type="Control" unique_id=788801013]
 layout_mode = 3
@@ -53,7 +53,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=2027367548]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_4emvx")
+theme_override_fonts/font = ExtResource("8_iysqm")
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=400092542]
 layout_mode = 0
@@ -64,6 +64,7 @@ offset_bottom = 61.0
 
 [node name="Text" type="Label" parent="CenterContainer2" unique_id=608256214]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("8_iysqm")
 horizontal_alignment = 1
 
 [connection signal="beat" from="Conductor" to="." method="_on_conductor_beat"]

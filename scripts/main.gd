@@ -40,9 +40,7 @@ func start():
 	puede = true
 	escenas_menu = 1
 	$Menu_skins/Label.position = Vector2(228, 108)
-	$Planeta.hide()
 	$Menu_opciones.hide()
-	$sol.hide()
 	$Start_menu.show()
 	$Menu_canciones/Tutorial.position = Vector2(-135, 60)
 	$Menu_canciones/Cancion1.position = Vector2(-135, 97)
@@ -200,7 +198,6 @@ func _on_play_focus_entered():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property($Start_menu/Label, "position", Vector2($Start_menu/Label.position.x, 20), 0.5)
 
 func _on_play_focus_exited():
 	$Start_menu/play.modulate.a = 0.5
@@ -219,8 +216,6 @@ func _on_play_2_focus_entered() -> void:
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property($Start_menu/Label, "position", Vector2($Start_menu/Label.position.x, 25), 0.5)
-
 
 func _on_play_2_focus_exited() -> void:
 	$Start_menu/options.modulate.a = 0.5

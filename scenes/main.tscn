@@ -1,18 +1,94 @@
 [gd_scene format=3 uid="uid://chsrbamp7ohfl"]
 
-[ext_resource type="Script" uid="uid://dpyyi8vosj4gc" path="res://scripts/planeta.gd" id="1_8xq8f"]
 [ext_resource type="Script" uid="uid://dpbjbtlvbsvb1" path="res://scripts/main.gd" id="1_plgr5"]
 [ext_resource type="PackedScene" uid="uid://b3ccvia3jfyma" path="res://scenes/Nivel.tscn" id="2_epcke"]
 [ext_resource type="Texture2D" uid="uid://bbms77exfav1m" path="res://assets/img/Planet_Pack_bycancer/neptunlikeplanet.png" id="2_lyjbk"]
-[ext_resource type="Script" uid="uid://y766dkt7ulis" path="res://scripts/node_2d.gd" id="3_lyjbk"]
-[ext_resource type="FontFile" uid="uid://52n471l80yxa" path="res://Fonts/Fredoka-SemiBold.ttf" id="5_02txq"]
+[ext_resource type="Script" uid="uid://cmdmur13jf2hx" path="res://scripts/star.gd" id="5_a8y0u"]
+[ext_resource type="Script" uid="uid://dir2og6shnu2o" path="res://scripts/start_menu.gd" id="6_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cc7cpovptxjtx" path="res://assets/img/pixelart_starfield_corona.png" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bfiana2i5ojrd" path="res://scripts/label.gd" id="7_272bh"]
+[ext_resource type="FontFile" uid="uid://b3b7xrb8e1d0x" path="res://Fonts/DigitalDisco.ttf" id="7_jkv2x"]
 [ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://4xxintd5dub3" path="res://scripts/label_hit2.gd" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://kipm5tsp4fq2" path="res://scenes/conductor.tscn" id="8_eb6dy"]
+[ext_resource type="Script" uid="uid://dt8jx8ol6rysa" path="res://scripts/logo.gd" id="8_trceg"]
+[ext_resource type="Texture2D" uid="uid://bljfasflvjilx" path="res://assets/img/PRXDlogov2.png" id="8_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://b652d7p3sceb" path="res://assets/img/FallingStar_Sprites.png" id="9_trceg"]
+[ext_resource type="FontFile" uid="uid://cf14gd12ecbxo" path="res://Fonts/DigitalDisco-Thin.ttf" id="12_jbj1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_getpj"]
 bg_color = Color(1, 1, 1, 0.007843138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("9_trceg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("9_trceg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+atlas = ExtResource("9_trceg")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muem4"]
+atlas = ExtResource("9_trceg")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp3eg"]
+atlas = ExtResource("9_trceg")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
+atlas = ExtResource("9_trceg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+atlas = ExtResource("9_trceg")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+atlas = ExtResource("9_trceg")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("9_trceg")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm3ni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbj1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muem4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp3eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ld40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc10j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jscy8")
+}],
+"loop": false,
+"name": &"falling_star",
+"speed": 10.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryguw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -190,46 +266,6 @@ grow_vertical = 2
 script = ExtResource("1_plgr5")
 nivel = ExtResource("2_epcke")
 
-[node name="Planeta" type="Node2D" parent="." unique_id=1046760730]
-script = ExtResource("1_8xq8f")
-
-[node name="Sprite2D" type="Sprite2D" parent="Planeta" unique_id=1953708968]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_lyjbk")
-
-[node name="sol" type="Node2D" parent="." unique_id=1442442098]
-script = ExtResource("3_lyjbk")
-
-[node name="Panel" type="Panel" parent="sol" unique_id=848565440]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="sol/Panel" unique_id=341804170]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "sol"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=194686977]
 layout_mode = 0
 offset_right = 365.71426
@@ -246,6 +282,21 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_getpj")
+script = ExtResource("6_eb6dy")
+
+[node name="Star" type="Node2D" parent="Start_menu" unique_id=1900775397]
+script = ExtResource("5_a8y0u")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Start_menu/Star" unique_id=1813080759]
+modulate = Color(0.89644486, 0.1881, 0.99, 0.2901961)
+scale = Vector2(0.7421875, 0.7265625)
+sprite_frames = SubResource("SpriteFrames_pm3ni")
+animation = &"falling_star"
+autoplay = "falling_star"
+frame = 8
+frame_progress = 1.0
+speed_scale = 0.9
 
 [node name="play" type="Button" parent="Start_menu" unique_id=1865241259]
 layout_mode = 1
@@ -265,7 +316,7 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../options")
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ryguw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pmmrt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_02txq")
@@ -291,7 +342,7 @@ focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../quit")
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_epcke")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pmmrt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_02txq")
@@ -310,21 +361,21 @@ offset_bottom = 171.0
 focus_neighbor_left = NodePath("empty")
 focus_neighbor_right = NodePath("empty")
 mouse_filter = 2
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0odxb")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lswn8")
 text = "Quit"
 
-[node name="Label" type="Label" parent="Start_menu" unique_id=762990097]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -63.0
-offset_right = 63.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "planetRhythmXD"
+[node name="Logo" type="Node2D" parent="Start_menu" unique_id=1314495711]
+position = Vector2(117, 44)
+script = ExtResource("8_trceg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Start_menu/Logo" unique_id=200563845]
+position = Vector2(10.999999, -1.999999)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_ya4ey")
+
+[node name="Conductor" parent="Start_menu" unique_id=1837012458 instance=ExtResource("8_eb6dy")]
 
 [node name="Menu_canciones" type="Panel" parent="." unique_id=991422949]
 self_modulate = Color(1, 1, 1, 0.24313726)
@@ -342,6 +393,8 @@ offset_left = 15.0
 offset_top = 20.0
 offset_right = 107.0
 offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("7_jkv2x")
+theme_override_font_sizes/font_size = 20
 text = "SONGS "
 
 [node name="Tutorial" type="Button" parent="Menu_canciones" unique_id=773248278]
@@ -354,6 +407,7 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../Cancion1")
 mouse_filter = 2
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7qfi4")
 theme_override_styles/focus = SubResource("StyleBoxFlat_v8b6v")
 
@@ -364,12 +418,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -11.5
-offset_right = 30.5
-offset_bottom = 11.5
+offset_left = -26.5
+offset_top = -8.0
+offset_right = 26.5
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_jbj1t")
 text = "Tutorial"
 
 [node name="rank" type="Label" parent="Menu_canciones/Tutorial" unique_id=1213475527]
@@ -400,12 +455,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -11.5
-offset_right = 15.0
-offset_bottom = 11.5
+offset_left = -41.0
+offset_top = -8.0
+offset_right = 41.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_jbj1t")
 text = "Spaced Out"
 
 [node name="rank" type="Label" parent="Menu_canciones/Cancion1" unique_id=90554949]
@@ -425,6 +481,7 @@ offset_bottom = 166.0
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
 mouse_filter = 2
+theme_override_fonts/font = ExtResource("12_jbj1t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_d13ii")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1u8w0")
 text = "Space Hardstyle"
@@ -464,7 +521,7 @@ focus_neighbor_left = NodePath("Empty")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../control")
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k1n7g")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_b7x3q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ij1aj")
@@ -486,7 +543,7 @@ focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../offset_cali")
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1mbx4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o25lb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xxdhm")
@@ -507,7 +564,7 @@ grow_horizontal = 2
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1mbx4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o25lb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xxdhm")
@@ -521,7 +578,7 @@ offset_left = 61.0
 offset_top = 115.0
 offset_right = 199.0
 offset_bottom = 146.0
-theme_override_fonts/font = ExtResource("5_02txq")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_a6jrf")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_qsp4k")
 theme_override_styles/focus = SubResource("StyleBoxFlat_xuqvo")
@@ -550,6 +607,7 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("Empty")
 focus_neighbor_bottom = NodePath("../Velocidad_planeta")
 focus_mode = 2
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yaehf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_074og")
 text = "Scroll Speed"
@@ -561,6 +619,7 @@ offset_right = 186.0
 offset_bottom = 23.0
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "2"
 
 [node name="Velocidad_planeta" type="Label" parent="Menu_preferences" unique_id=1058730452]
@@ -572,6 +631,7 @@ offset_bottom = 83.0
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
 focus_mode = 2
+theme_override_fonts/font = ExtResource("7_jkv2x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/focus = SubResource("StyleBoxFlat_82xsv")
 text = "Vel. of Planet"
@@ -583,6 +643,7 @@ offset_right = 174.0
 offset_bottom = 23.0
 focus_neighbor_left = NodePath("Empty")
 focus_neighbor_right = NodePath("Empty")
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "0.05"
 
 [node name="Menu_controles" type="Panel" parent="." unique_id=128446717]
@@ -615,6 +676,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_4c57u")
 layout_mode = 1
 offset_right = 27.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "Hit "
 
 [node name="Label" type="Label" parent="Menu_controles/Button/Label" unique_id=850203435]
@@ -622,6 +684,7 @@ layout_mode = 0
 offset_left = 146.0
 offset_right = 192.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "F"
 script = ExtResource("7_272bh")
 
@@ -643,6 +706,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_vivmo")
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "Hit 2"
 
 [node name="Label" type="Label" parent="Menu_controles/Button2/Label2" unique_id=2087679125]
@@ -650,6 +714,7 @@ layout_mode = 0
 offset_left = 146.0
 offset_right = 192.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "J"
 script = ExtResource("8_5vw27")
 
@@ -679,6 +744,7 @@ offset_right = 108.0
 offset_bottom = 91.5
 grow_horizontal = 2
 scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "Press any key to rebind
 
 Backspace to cancel "
@@ -725,6 +791,7 @@ offset_top = 4.0
 offset_right = 132.0
 offset_bottom = 27.0
 scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "High score: 000000"
 
 [node name="accuracy" type="Label" parent="stats" unique_id=524119723]
@@ -734,6 +801,7 @@ offset_top = 18.0
 offset_right = 138.0
 offset_bottom = 41.0
 scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "Accuracy: 00.0%"
 
 [node name="rank" type="Label" parent="stats" unique_id=1007496888]
@@ -743,6 +811,7 @@ offset_top = 32.0
 offset_right = 65.0
 offset_bottom = 55.0
 scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("7_jkv2x")
 text = "Rank:"
 
 [node name="Label" type="Label" parent="stats/rank" unique_id=1119930676]
@@ -752,12 +821,15 @@ offset_right = 62.0
 offset_bottom = 23.0
 
 [connection signal="rebind_tecla" from="." to="Menu_controles/Button/Label/Label" method="_on_control_rebind_tecla"]
+[connection signal="animation_finished" from="Start_menu/Star/AnimatedSprite2D" to="Start_menu/Star" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="focus_entered" from="Start_menu/play" to="." method="_on_play_focus_entered"]
 [connection signal="focus_exited" from="Start_menu/play" to="." method="_on_play_focus_exited"]
 [connection signal="focus_entered" from="Start_menu/options" to="." method="_on_play_2_focus_entered"]
 [connection signal="focus_exited" from="Start_menu/options" to="." method="_on_play_2_focus_exited"]
 [connection signal="focus_entered" from="Start_menu/quit" to="." method="_on_quit_focus_entered"]
 [connection signal="focus_exited" from="Start_menu/quit" to="." method="_on_quit_focus_exited"]
+[connection signal="beat" from="Start_menu/Conductor" to="Start_menu/Logo" method="_on_conductor_beat"]
+[connection signal="finished" from="Start_menu/Conductor" to="Start_menu/Conductor" method="_on_finished"]
 [connection signal="focus_entered" from="Menu_canciones/Tutorial" to="." method="_on_tutorial_focus_entered"]
 [connection signal="focus_entered" from="Menu_canciones/Cancion1" to="." method="_on_cancion_1_focus_entered"]
 [connection signal="focus_entered" from="Menu_canciones/Cancion2" to="." method="_on_cancion_2_focus_entered"]

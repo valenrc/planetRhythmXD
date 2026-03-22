@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 # Variables globales (Ajustada para cada nivel)
-var bpm
+var bpm:int
 var measures = 4  # compases de la canción
 
 # Variables internas
@@ -18,13 +18,10 @@ signal measure(position)
 
 var song: AudioStream # cancion eyeyey
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#sec_per_beat = 60.0 / float(bpm)
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix() - AudioServer.get_output_latency()
@@ -52,3 +49,8 @@ func _load_stream(path:String):
 	"""
 	song = load(path)
 	stream = song
+	
+func _on_finished() -> void:
+	# de alguna manera resetear song_position_in_beats
+	# que otra cosa mas se debe resetear?
+	print("loop")

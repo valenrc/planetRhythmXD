@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if finished or next_note_to_judge >= data.size():
 		return
 
-	var song_pos_ms:float = _get_song_pos_ms()
+	var song_pos_ms:float = $Conductor.song_position * 1000.0
 
 	# saltar automáticamente notas ya perdidas
 	while next_note_to_judge < data.size():
@@ -89,7 +89,8 @@ func offset_calibrate() -> float:
 	if offsets.is_empty():
 		return 0.0
 
-	# Media recortada para reducir impacto de outliers humanos.
+	# https://en.wikipedia.org/wiki/Truncated_mean
+	# reducir los hits no consistentes
 	var sorted_offsets: Array = offsets.duplicate()
 	sorted_offsets.sort()
 
@@ -116,11 +117,6 @@ func _mean(values: Array) -> float:
 	for v in values:
 		sum += v
 	return sum / float(values.size())
-
-func _get_song_pos_ms() -> float:
-	if $Conductor.has_method("get_song_position_seconds"):
-		return $Conductor.get_song_position_seconds() * 1000.0
-	return $Conductor.song_position * 1000.0
 
 func load_level(path: String) -> Array:
 	var result: Array = []
@@ -150,10 +146,9 @@ func load_level(path: String) -> Array:
 
 		if in_notes and line != "":
 			var row_data: PackedStringArray = line.split(",", false)
-			# formato del .lvl del calibrador: id,type,timing_ms
+			# formato: id,type,timing_ms
 			if row_data.size() >= 3 and row_data[0] != "":
 				var note_id: int = int(row_data[0])
-				# NO aplicamos global_offset: el calibrador mide desde cero
 				var timing: int = int(row_data[2])
 				result.push_back(PackedInt32Array([note_id, timing]))
 
