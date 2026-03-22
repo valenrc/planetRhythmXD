@@ -6,3 +6,4 @@
 .git/
 .cursor/
 build/
+Fonts/*.ttf.import
