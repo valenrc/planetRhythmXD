@@ -3,12 +3,14 @@ var animacion_terminada := false
 var tween: Tween
 
 func _ready() -> void:
+	$aliensin.play()
 	$BG_music.play()
 	await get_tree().create_timer(0.5).timeout
 	$score.text = str("Score: ", int(GlobalScripts.score))
 	$accuracy.text = str("Accuracy: ", snapped(GlobalScripts.accuracy * 100, 0.01), "%")
 	$salir.modulate.a = 0
 	$flash.position = Vector2(-171, 64)
+	
 	
 	if GlobalScripts.accuracy >= 0 and GlobalScripts.accuracy < 0.70:
 		$Panel/CenterContainer/FinalScore.add_theme_color_override("font_color", Color(0.537, 0.537, 0.537, 1.0))
@@ -44,7 +46,8 @@ func _ready() -> void:
 	tween = create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.set_ease(Tween.EASE_OUT)
-
+	
+	
 	tween.tween_property($score, "position", Vector2(19,$score.position.y), 0.5)
 	tween.tween_property($flash, "modulate:a", 0.7, 0.1)
 	tween.tween_callback(func(): $score2.play())
@@ -60,19 +63,29 @@ func _ready() -> void:
 	tween.tween_property($Panel, "modulate:a", 1, 0)
 	tween.tween_property($Pane_skip_animacionl, "self_modulate:a", 1, 0)
 	tween.tween_callback(func(): $"final score".play())
+	tween.tween_property($Panel, "self_modulate:a", 0.9, 0.04)
 	tween.tween_property($Panel, "self_modulate:a", 0, 1.12)
+	if randi() % 100 > 67:
+		tween.tween_property($aliensin, "position", Vector2(234.0, $aliensin.position.y), 1.2)
 	tween.tween_property($salir, "modulate:a", 1, 1.1)
 	
 	tween.finished.connect(func(): animacion_terminada = true)
+	
+	#await get_tree().create_timer(5.0).timeout
 
 func _skip_animacion() -> void:
 	if tween and tween.is_running():
 		tween.kill()
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
 	$score.position.x = 19
 	$accuracy.position.x = 19
 	$flash.modulate.a = 0
 	$Panel.modulate.a = 1
 	$Panel.self_modulate.a = 0
+	if randi() % 100 > 67:
+		tween.tween_property($aliensin, "position", Vector2(234.0, $aliensin.position.y), 1.2)
 	$salir.modulate.a = 1
 	animacion_terminada = true
 

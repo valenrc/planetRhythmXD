@@ -2,16 +2,264 @@
 
 [ext_resource type="Script" uid="uid://c81nc2kwmo5r2" path="res://scripts/endscreen.gd" id="1_dlbub"]
 [ext_resource type="Texture2D" uid="uid://cp8x0q3kf5mfm" path="res://assets/img/pixelart_starfield.png" id="1_gcvua"]
-[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
+[ext_resource type="FontFile" uid="uid://dxp3aftynil2n" path="res://Fonts/VCR_OSD_MONO.ttf" id="2_dlbub"]
 [ext_resource type="AudioStream" uid="uid://bj8f5temfyi7i" path="res://assets/music/score.mp3" id="4_k7cnj"]
-[ext_resource type="AudioStream" uid="uid://m5df3pdfdwn6" path="res://assets/music/final_score.mp3" id="5_nxgh7"]
+[ext_resource type="AudioStream" uid="uid://3fuaxqdidndm" path="res://assets/music/final_score.mp3" id="5_fs4kp"]
 [ext_resource type="AudioStream" uid="uid://7jmm7s471dp" path="res://assets/music/endscreen.ogg" id="6_rrh12"]
+[ext_resource type="Texture2D" uid="uid://b5td61jct4ccy" path="res://assets/img/alien/frame_00_delay-0.04s.png" id="7_fs4kp"]
+[ext_resource type="Texture2D" uid="uid://dk5ll0ewde1kt" path="res://assets/img/alien/frame_01_delay-0.04s.png" id="8_8l6y8"]
+[ext_resource type="Texture2D" uid="uid://dsiiw6x1aynly" path="res://assets/img/alien/frame_02_delay-0.04s.png" id="9_pa766"]
+[ext_resource type="Texture2D" uid="uid://bbrlbg5f6efbp" path="res://assets/img/alien/frame_03_delay-0.04s.png" id="10_nm07p"]
+[ext_resource type="Texture2D" uid="uid://d2wj31anws2v3" path="res://assets/img/alien/frame_04_delay-0.04s.png" id="11_0p7m7"]
+[ext_resource type="Texture2D" uid="uid://caik6k8rvv0b3" path="res://assets/img/alien/frame_05_delay-0.04s.png" id="12_aive4"]
+[ext_resource type="Texture2D" uid="uid://c6hjok267dgt8" path="res://assets/img/alien/frame_06_delay-0.04s.png" id="13_i06fd"]
+[ext_resource type="Texture2D" uid="uid://bavns68bhw4lq" path="res://assets/img/alien/frame_07_delay-0.04s.png" id="14_n2hx0"]
+[ext_resource type="Texture2D" uid="uid://b17t2go6p66ry" path="res://assets/img/alien/frame_08_delay-0.04s.png" id="15_7uhse"]
+[ext_resource type="Texture2D" uid="uid://dwwowthiwqrhr" path="res://assets/img/alien/frame_09_delay-0.04s.png" id="16_tn22l"]
+[ext_resource type="Texture2D" uid="uid://5j37t5blaxyr" path="res://assets/img/alien/frame_10_delay-0.04s.png" id="17_fcf61"]
+[ext_resource type="Texture2D" uid="uid://cdr5b5nna718b" path="res://assets/img/alien/frame_11_delay-0.04s.png" id="18_fuofn"]
+[ext_resource type="Texture2D" uid="uid://dv70ssafxews7" path="res://assets/img/alien/frame_12_delay-0.04s.png" id="19_8qeoh"]
+[ext_resource type="Texture2D" uid="uid://crum1hs0s1t17" path="res://assets/img/alien/frame_13_delay-0.04s.png" id="20_55l2c"]
+[ext_resource type="Texture2D" uid="uid://c584bfld7c5pe" path="res://assets/img/alien/frame_14_delay-0.04s.png" id="21_u37ju"]
+[ext_resource type="Texture2D" uid="uid://b0tbt1k2yq1tu" path="res://assets/img/alien/frame_15_delay-0.04s.png" id="22_s5lgb"]
+[ext_resource type="Texture2D" uid="uid://btbm045gppeoc" path="res://assets/img/alien/frame_16_delay-0.04s.png" id="23_n5bsg"]
+[ext_resource type="Texture2D" uid="uid://ok05s17nk4o2" path="res://assets/img/alien/frame_17_delay-0.04s.png" id="24_ewi12"]
+[ext_resource type="Texture2D" uid="uid://yni6wp2jwu38" path="res://assets/img/alien/frame_18_delay-0.04s.png" id="25_48ksp"]
+[ext_resource type="Texture2D" uid="uid://ck8j32mh7nrw4" path="res://assets/img/alien/frame_19_delay-0.04s.png" id="26_1k7up"]
+[ext_resource type="Texture2D" uid="uid://wgbxhxyjnu4n" path="res://assets/img/alien/frame_20_delay-0.04s.png" id="27_e66nu"]
+[ext_resource type="Texture2D" uid="uid://cap1nker3a02b" path="res://assets/img/alien/frame_21_delay-0.04s.png" id="28_mwt3o"]
+[ext_resource type="Texture2D" uid="uid://c6orstivcbpht" path="res://assets/img/alien/frame_22_delay-0.04s.png" id="29_hry4g"]
+[ext_resource type="Texture2D" uid="uid://iqo3isqqv8xh" path="res://assets/img/alien/frame_23_delay-0.04s.png" id="30_i72hc"]
+[ext_resource type="Texture2D" uid="uid://o57323mbfkku" path="res://assets/img/alien/frame_24_delay-0.04s.png" id="31_psvxv"]
+[ext_resource type="Texture2D" uid="uid://ctrcn7i1v2xv4" path="res://assets/img/alien/frame_25_delay-0.04s.png" id="32_4qs6h"]
+[ext_resource type="Texture2D" uid="uid://cmc06bnsr3mnq" path="res://assets/img/alien/frame_26_delay-0.04s.png" id="33_l8j3d"]
+[ext_resource type="Texture2D" uid="uid://bq0c5h7uj6po7" path="res://assets/img/alien/frame_27_delay-0.04s.png" id="34_yen5d"]
+[ext_resource type="Texture2D" uid="uid://bc7dpqlrlxhdp" path="res://assets/img/alien/frame_28_delay-0.04s.png" id="35_8ha1v"]
+[ext_resource type="Texture2D" uid="uid://bv2smmfqrnypu" path="res://assets/img/alien/frame_29_delay-0.04s.png" id="36_fpjif"]
+[ext_resource type="Texture2D" uid="uid://lx322d0wno6g" path="res://assets/img/alien/frame_30_delay-0.04s.png" id="37_r6bgi"]
+[ext_resource type="Texture2D" uid="uid://dmv04gs2s065d" path="res://assets/img/alien/frame_31_delay-0.04s.png" id="38_qwnm6"]
+[ext_resource type="Texture2D" uid="uid://dq7bjws8n3mom" path="res://assets/img/alien/frame_32_delay-0.04s.png" id="39_j1snq"]
+[ext_resource type="Texture2D" uid="uid://2wp7rd3sxa4b" path="res://assets/img/alien/frame_33_delay-0.04s.png" id="40_3vu0w"]
+[ext_resource type="Texture2D" uid="uid://bty77okm0opww" path="res://assets/img/alien/frame_34_delay-0.04s.png" id="41_tcxs8"]
+[ext_resource type="Texture2D" uid="uid://lu5rjhhxdqfq" path="res://assets/img/alien/frame_35_delay-0.04s.png" id="42_p68eu"]
+[ext_resource type="Texture2D" uid="uid://dmb78yw1cht4a" path="res://assets/img/alien/frame_36_delay-0.04s.png" id="43_xgisu"]
+[ext_resource type="Texture2D" uid="uid://127t7a53x54k" path="res://assets/img/alien/frame_37_delay-0.04s.png" id="44_d0nvt"]
+[ext_resource type="Texture2D" uid="uid://c3gweeoicesbr" path="res://assets/img/alien/frame_38_delay-0.04s.png" id="45_rry07"]
+[ext_resource type="Texture2D" uid="uid://25g27ear1rcx" path="res://assets/img/alien/frame_39_delay-0.04s.png" id="46_l1to4"]
+[ext_resource type="Texture2D" uid="uid://b4lkf6jx7pimm" path="res://assets/img/alien/frame_40_delay-0.04s.png" id="47_03uq6"]
+[ext_resource type="Texture2D" uid="uid://hjountdbkb6l" path="res://assets/img/alien/frame_41_delay-0.04s.png" id="48_bx6mf"]
+[ext_resource type="Texture2D" uid="uid://ddbdiffjohdeh" path="res://assets/img/alien/frame_42_delay-0.04s.png" id="49_o8vhd"]
+[ext_resource type="Texture2D" uid="uid://6pb6a5bdc5v7" path="res://assets/img/alien/frame_43_delay-0.04s.png" id="50_3h6yd"]
+[ext_resource type="Texture2D" uid="uid://bo2v82n53l7l0" path="res://assets/img/alien/frame_44_delay-0.04s.png" id="51_dfncj"]
+[ext_resource type="Texture2D" uid="uid://bqha7wdugbo2u" path="res://assets/img/alien/frame_45_delay-0.04s.png" id="52_r2vdb"]
+[ext_resource type="Texture2D" uid="uid://da6r4ilcpqt0a" path="res://assets/img/alien/frame_46_delay-0.04s.png" id="53_irolo"]
+[ext_resource type="Texture2D" uid="uid://px5t8neyjqw" path="res://assets/img/alien/frame_47_delay-0.04s.png" id="54_vk5vo"]
+[ext_resource type="Texture2D" uid="uid://dy3gd8nvilpvk" path="res://assets/img/alien/frame_48_delay-0.04s.png" id="55_1lfdf"]
+[ext_resource type="Texture2D" uid="uid://s4k7ds6lwjq6" path="res://assets/img/alien/frame_49_delay-0.04s.png" id="56_is151"]
+[ext_resource type="Texture2D" uid="uid://bpqgikek6h8v7" path="res://assets/img/alien/frame_50_delay-0.04s.png" id="57_xu8pb"]
+[ext_resource type="Texture2D" uid="uid://j1svvnc6seq3" path="res://assets/img/alien/frame_51_delay-0.04s.png" id="58_4q0pd"]
+[ext_resource type="Texture2D" uid="uid://c55ptdqhvgv85" path="res://assets/img/alien/frame_52_delay-0.04s.png" id="59_exu7m"]
+[ext_resource type="Texture2D" uid="uid://07hniyfy8bed" path="res://assets/img/alien/frame_53_delay-0.04s.png" id="60_qq5m1"]
+[ext_resource type="Texture2D" uid="uid://8xcn5r45jh00" path="res://assets/img/alien/frame_54_delay-0.04s.png" id="61_c8u0o"]
+[ext_resource type="Texture2D" uid="uid://dgcu03bqahe77" path="res://assets/img/alien/frame_55_delay-0.04s.png" id="62_5sey8"]
+[ext_resource type="Texture2D" uid="uid://oh68jcplsipm" path="res://assets/img/alien/frame_56_delay-0.04s.png" id="63_wfixv"]
+[ext_resource type="Texture2D" uid="uid://78pv85b3ojpa" path="res://assets/img/alien/frame_57_delay-0.04s.png" id="64_8ie8i"]
+[ext_resource type="Texture2D" uid="uid://dm83ylthx1gvt" path="res://assets/img/alien/frame_58_delay-0.04s.png" id="65_uvcp8"]
+[ext_resource type="Texture2D" uid="uid://bec5np5cx1avf" path="res://assets/img/alien/frame_59_delay-0.04s.png" id="66_61128"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlbub"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7cnj"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w3uby"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fs4kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8l6y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pa766")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nm07p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0p7m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aive4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i06fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_n2hx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7uhse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tn22l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fcf61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fuofn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8qeoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_55l2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_u37ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_s5lgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_n5bsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ewi12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_48ksp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1k7up")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_e66nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_mwt3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_hry4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_i72hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_psvxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_4qs6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_l8j3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yen5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_8ha1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_fpjif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_r6bgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_qwnm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_j1snq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_3vu0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_tcxs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_p68eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_xgisu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_d0nvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_rry07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_l1to4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_03uq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_bx6mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_o8vhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_3h6yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_dfncj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_r2vdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_irolo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_vk5vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_1lfdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_is151")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_xu8pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_4q0pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_exu7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_qq5m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_c8u0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_5sey8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_wfixv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_8ie8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_uvcp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_61128")
+}],
+"loop": true,
+"name": &"aliensin",
+"speed": 35.0
+}]
 
 [node name="Control" type="Control" unique_id=298514417]
 layout_mode = 3
@@ -118,10 +366,17 @@ stream = ExtResource("4_k7cnj")
 volume_db = 5.0
 
 [node name="final score" type="AudioStreamPlayer2D" parent="." unique_id=542442471]
-stream = ExtResource("5_nxgh7")
+stream = ExtResource("5_fs4kp")
 volume_db = 5.0
 
 [node name="BG_music" type="AudioStreamPlayer2D" parent="." unique_id=845981014]
 stream = ExtResource("6_rrh12")
 volume_db = 1.0
 parameters/looping = true
+
+[node name="aliensin" type="AnimatedSprite2D" parent="." unique_id=1220145149]
+position = Vector2(290, 218)
+scale = Vector2(0.1, 0.094)
+sprite_frames = SubResource("SpriteFrames_w3uby")
+animation = &"aliensin"
+frame_progress = 0.6190837
