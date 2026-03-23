@@ -1,8 +1,8 @@
 ![Logo](assets/img/PRXDlogov2.png)
 
-Juego de ritmo 2k de tématica espacial y notas orbitales.
+Juego de ritmo 2k de tématica espacial y notas circulares.
 
->Sos un planeta enano resistiendo por mantenerse en su sistema. Luchá contra el olvido al ritmo de la música.
+>Sos un planeta enano resistiendo por mantenerse en su sistema. Luchá contra el olvido al ritmo de la música"
 
 Desarrollado para la DCUBA-JAM 2026.
 
@@ -20,7 +20,10 @@ Desarrollado para la DCUBA-JAM 2026.
 - `space_hardstyle.ogg`: [dax1n - space hardstyle]
 - `spaced_out.ogg`: [Spaced Out - Ready Go Music]
 - `endscreen.ogg`: [Space Sprinkles - Matthew Pablo]
-- `galaxy.ogg`: [UK GARAGE x JERSEY CLUB TYPE BEAT - "GALAXY" - JVD]
+- `galaxy.ogg`: [UK GARAGE x JERSEY CLUB TYPE BEAT - "GALAXY"
+ - JVD]
+- `drum-hitnormalh.wav`: [osu!resources]
+- `heartbeat.wav`: [osu!resources]
 
 ## Documentación
 ### .lvl file format
