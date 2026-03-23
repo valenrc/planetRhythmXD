@@ -28,6 +28,12 @@ func _process(_delta: float) -> void:
 		
 		# convierto el timing actual a la cantidad de beats ocurridos desde el inicio de la canción
 		song_position_in_beats = int(floor(song_position / sec_per_beat)) + beats_before_start
+		
+		# detecto si la canción loopeo (para musica de menu)
+		if song_position_in_beats < last_reported_beat:
+			last_reported_beat = 0
+			current_measure = 0
+		
 		_report_beat()
 		
 func _report_beat():
@@ -49,8 +55,3 @@ func _load_stream(path:String):
 	"""
 	song = load(path)
 	stream = song
-	
-func _on_finished() -> void:
-	# de alguna manera resetear song_position_in_beats
-	# que otra cosa mas se debe resetear?
-	print("loop")

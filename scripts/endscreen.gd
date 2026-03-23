@@ -84,7 +84,7 @@ func _skip_animacion() -> void:
 	$flash.modulate.a = 0
 	$Panel.modulate.a = 1
 	$Panel.self_modulate.a = 0
-	if randi() % 100 > 67:
+	if randi() % 100 > 80:
 		tween.tween_property($aliensin, "position", Vector2(234.0, $aliensin.position.y), 1.2)
 	$salir.modulate.a = 1
 	animacion_terminada = true

@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://wapuk8me8g7d" path="res://scenes/particulas_hit.tscn" id="4_wv5gp"]
 [ext_resource type="Texture2D" uid="uid://cc7cpovptxjtx" path="res://assets/img/pixelart_starfield_corona.png" id="5_afnhb"]
 [ext_resource type="PackedScene" uid="uid://bqx5kp7m2nwda" path="res://scenes/planeta.tscn" id="5_bxp70"]
-[ext_resource type="FontFile" uid="uid://b0pffld06j8j6" path="res://fonts/Fredoka-Regular.ttf" id="8_mhcqa"]
 [ext_resource type="Script" uid="uid://16kox4ye3jey" path="res://scripts/pausa_handle.gd" id="9_ewed5"]
-[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://fonts/VCR_OSD_MONO.ttf" id="9_uckt3"]
+[ext_resource type="FontFile" uid="uid://b72ancc3mr5c3" path="res://Fonts/VCR_OSD_MONO.ttf" id="9_uckt3"]
 [ext_resource type="Texture2D" uid="uid://d3yiaui35iu0h" path="res://assets/img/Planet_Pack_bycancer/sun.png" id="11_uckt3"]
 [ext_resource type="Script" uid="uid://dqlsgkvu3sn47" path="res://scripts/muerte_panel.gd" id="12_31wwp"]
+[ext_resource type="FontFile" uid="uid://b3b7xrb8e1d0x" path="res://Fonts/DigitalDisco.ttf" id="13_llwat"]
 [ext_resource type="AudioStream" uid="uid://bt8rjdhrawb8a" path="res://assets/music/drum-hitnormalh.wav" id="14_afnhb"]
 [ext_resource type="AudioStream" uid="uid://c7ghld7yjidln" path="res://assets/music/heartbeat.wav" id="15_fhahl"]
 [ext_resource type="AudioStream" uid="uid://d14a6k6lsa31q" path="res://assets/music/soundreality-explosion-fx-343683.mp3" id="16_fhahl"]
@@ -106,7 +106,7 @@ offset_top = 3.9999998
 offset_right = 263.25
 offset_bottom = 30.75
 scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("8_mhcqa")
+theme_override_fonts/font = ExtResource("9_uckt3")
 text = "0"
 horizontal_alignment = 2
 
@@ -117,7 +117,7 @@ offset_top = 20.0
 offset_right = 285.75
 offset_bottom = 43.0
 scale = Vector2(0.6, 0.6)
-theme_override_fonts/font = ExtResource("8_mhcqa")
+theme_override_fonts/font = ExtResource("9_uckt3")
 text = "0"
 horizontal_alignment = 2
 
@@ -128,6 +128,7 @@ offset_top = 7.0
 offset_right = 137.5
 offset_bottom = 30.0
 scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("9_uckt3")
 text = "%"
 
 [node name="pausa_handle" type="Node" parent="." unique_id=2013148329]
@@ -214,31 +215,41 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -67.0
-offset_top = 40.0
-offset_right = 67.0
-offset_bottom = 89.0
+offset_left = -62.0
+offset_top = 26.0
+offset_right = 62.0
+offset_bottom = 52.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_llwat")
 text = "Planeta olvidado!"
 
 [node name="Label" type="Label" parent="Panel2/Label" unique_id=1063673148]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 20.0
+offset_top = 17.0
 offset_right = 114.0
-offset_bottom = 43.0
+offset_bottom = 40.0
 scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("13_llwat")
 text = "(LO DIJE)"
 
 [node name="reiniciar_muerte" type="Label" parent="Panel2" unique_id=1355286463]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 90.0
-offset_right = 148.0
-offset_bottom = 113.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -28.0
+offset_right = 24.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath("../salir_muerte")
 focus_mode = 2
+theme_override_fonts/font = ExtResource("9_uckt3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xjur1")
 theme_override_styles/focus = SubResource("StyleBoxFlat_w0kc2")
 text = "Reset"
@@ -251,12 +262,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -19.0
-offset_top = 1.0
-offset_right = 15.0
-offset_bottom = 24.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+theme_override_fonts/font = ExtResource("9_uckt3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o28eh")
 theme_override_styles/focus = SubResource("StyleBoxFlat_54fot")
 text = "Back"

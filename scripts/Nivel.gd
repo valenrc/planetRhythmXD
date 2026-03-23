@@ -108,7 +108,6 @@ func _ready() -> void:
 	
 	# configuración de nivel
 	$Conductor.bpm = bpm
-	print(bpm)
 	$Conductor.measures = 4
 	$Conductor.sec_per_beat = 60.0 / bpm
 	
@@ -147,7 +146,8 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	var queue: Array
 	if event.is_action_pressed("cheat epico"):
-		_on_conductor_finished()
+		if OS.is_debug_build():
+			_on_conductor_finished()
 	if event.is_action_pressed("note_input_1"):
 		$bass.play()
 		queue = note_queue1
