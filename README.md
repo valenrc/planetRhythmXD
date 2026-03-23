@@ -1,5 +1,26 @@
+![Logo](assets/img/PRXDlogov2.png)
+
+Juego de ritmo 2k de tématica espacial y notas orbitales.
+
+>Sos un planeta enano resistiendo por mantenerse en su sistema. Luchá contra el olvido al ritmo de la música.
+
+Desarrollado para la DCUBA-JAM 2026.
+
 ## ASSETS
-Planet_Pack_bycancer by Batuhan https://andelrodis.itch.io/solar-system-pack
+
+### Imágenes (`assets/img/`)
+- `Cubawikilogo_pixelated.png`: [Jugoprex (Cubawiki)]
+- `FallingStar_Sprites.png`: [https://pixel-salvaje.itch.io/]
+- `pixelart_starfield.png` / `pixelart_starfield_corona.png`: [https://space-spheremaps.itch.io/pixelart-starfields]
+- `Planet_Pack_bycancer`: [https://andelrodis.itch.io/solar-system-pack]
+
+### Música y Sonidos (`assets/music/`)
+- `flow.ogg`: ["Flow" by Creo]
+- `menu.ogg` / `menuv2.ogg`: [Awake! (Megawall-10) - cynicmusic (opengameart.org)]
+- `space_hardstyle.ogg`: [dax1n - space hardstyle]
+- `spaced_out.ogg`: [Spaced Out - Ready Go Music]
+- `endscreen.ogg`: [Space Sprinkles - Matthew Pablo]
+- `galaxy.ogg`: [UK GARAGE x JERSEY CLUB TYPE BEAT - "GALAXY" - JVD]
 
 ## Documentación
 ### .lvl file format
